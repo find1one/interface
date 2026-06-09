@@ -41,6 +41,26 @@ on conflict (id) do update set
   travel_styles = excluded.travel_styles,
   recommended_duration = excluded.recommended_duration;
 
+update destinations
+set lat = coords.lat, lng = coords.lng
+from (values
+  ('kyoto', 35.0116, 135.7681),
+  ('tokyo', 35.6762, 139.6503),
+  ('santorini', 36.3932, 25.4615),
+  ('costa-rica', 10.4712, -84.6453),
+  ('bali', -8.3405, 115.0920),
+  ('maui', 20.7984, -156.3319),
+  ('interlaken', 46.6863, 7.8632),
+  ('osaka', 34.6937, 135.5023),
+  ('barcelona', 41.3874, 2.1686),
+  ('queenstown', -45.0312, 168.6626),
+  ('paris', 48.8566, 2.3522),
+  ('bangkok', 13.7563, 100.5018),
+  ('vancouver', 49.2827, -123.1207),
+  ('iceland-ring-road', 64.9631, -19.0208)
+) as coords(id, lat, lng)
+where destinations.id = coords.id;
+
 insert into destination_attractions (id, destination_id, name, visit_time, image)
 values
   ('fushimi', 'kyoto', 'Fushimi Inari-taisha', '2.5 hr', 'https://lh3.googleusercontent.com/aida-public/AB6AXuDPXzIi6VRmsD7RPjjetHYhK06qsDNbDNVwjvAJfcQO47Xp6pEqulQ8v2HZXMIRiKrBYsfxF6YwK-SdM4OPoCydTqHnY4Aj-740IqWjbAYz4SiBmY_pu9f2KobrPpOozT3c4sZwh98OYFPinhA7F_ffa7ylJ_gSdLI6DYV9wv8gyliBSiXUKj2h-pWoaiwdZJYMHAILX2T5kzveA5teLZW00BAZmYFt7ml_PkxzqJaWgOJ6vXJUOozNEvNWKtSB73QxACCXiJm9D5A'),
@@ -89,6 +109,53 @@ on conflict (id) do update set
   name = excluded.name,
   visit_time = excluded.visit_time,
   image = excluded.image;
+
+update destination_attractions
+set lat = coords.lat, lng = coords.lng
+from (values
+  ('fushimi', 34.9671, 135.7727),
+  ('kiyomizu', 34.9949, 135.7850),
+  ('arashiyama', 35.0172, 135.6710),
+  ('museum', 35.7188, 139.7765),
+  ('shinjuku', 35.6852, 139.7101),
+  ('oia-sunset', 36.4618, 25.3753),
+  ('fira-caldera', 36.4167, 25.4333),
+  ('red-beach', 36.3486, 25.3940),
+  ('arenal-volcano', 10.4627, -84.7032),
+  ('la-fortuna-waterfall', 10.4400, -84.6700),
+  ('mistico-bridges', 10.4877, -84.7554),
+  ('uluwatu-temple', -8.8291, 115.0849),
+  ('ubud-rice-terraces', -8.4319, 115.2794),
+  ('seminyak-beach', -8.6913, 115.1577),
+  ('haleakala', 20.7097, -156.2533),
+  ('road-to-hana', 20.7557, -155.9874),
+  ('kaanapali-beach', 20.9175, -156.6966),
+  ('harder-kulm', 46.6976, 7.8518),
+  ('lake-brienz', 46.7269, 8.0336),
+  ('jungfraujoch', 46.5475, 7.9854),
+  ('dotonbori', 34.6687, 135.5014),
+  ('kuromon-market', 34.6651, 135.5065),
+  ('osaka-castle', 34.6873, 135.5259),
+  ('sagrada-familia', 41.4036, 2.1744),
+  ('park-guell', 41.4145, 2.1527),
+  ('gothic-quarter', 41.3839, 2.1763),
+  ('skyline-queenstown', -45.0264, 168.6587),
+  ('milford-sound', -44.6716, 167.9256),
+  ('lake-wakatipu', -45.0740, 168.5187),
+  ('louvre', 48.8606, 2.3376),
+  ('eiffel-tower', 48.8584, 2.2945),
+  ('montmartre', 48.8867, 2.3431),
+  ('grand-palace', 13.7500, 100.4913),
+  ('wat-arun', 13.7437, 100.4889),
+  ('chatuchak', 13.7990, 100.5512),
+  ('stanley-park', 49.3043, -123.1443),
+  ('granville-island', 49.2712, -123.1340),
+  ('capilano', 49.3429, -123.1149),
+  ('skogafoss', 63.5321, -19.5114),
+  ('jokulsarlon', 64.0784, -16.2306),
+  ('vik-beach', 63.4186, -19.0060)
+) as coords(id, lat, lng)
+where destination_attractions.id = coords.id;
 
 insert into preferences (user_id, budget, pace, dietary, accessibility, transport, language, currency)
 values (

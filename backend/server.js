@@ -107,7 +107,8 @@ function mapAttraction(row) {
     id: row.id,
     name: row.name,
     time: row.visit_time,
-    image: row.image
+    image: row.image,
+    coordinates: row.lat == null || row.lng == null ? null : { lat: Number(row.lat), lng: Number(row.lng) }
   };
 }
 
@@ -125,6 +126,7 @@ function mapDestination(row) {
     budgetLevel: row.budget_level,
     travelStyles: row.travel_styles || [],
     recommendedDuration: row.recommended_duration,
+    coordinates: row.lat == null || row.lng == null ? null : { lat: Number(row.lat), lng: Number(row.lng) },
     keyAttractions: (row.destination_attractions || []).map((item) => item.name),
     attractions: (row.destination_attractions || []).map(mapAttraction)
   };
@@ -190,7 +192,8 @@ function mapSavedDestination(row) {
     description: destination.description,
     budgetLevel: destination.budget_level,
     travelStyles: destination.travel_styles || [],
-    recommendedDuration: destination.recommended_duration
+    recommendedDuration: destination.recommended_duration,
+    coordinates: destination.lat == null || destination.lng == null ? null : { lat: Number(destination.lat), lng: Number(destination.lng) }
   };
 }
 

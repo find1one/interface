@@ -20,6 +20,8 @@ create table if not exists destinations (
   budget_level text not null default 'Standard' check (budget_level in ('Economy', 'Standard', 'Premium')),
   travel_styles text[] not null default '{}',
   recommended_duration text not null default '3-5 days' check (recommended_duration in ('Weekend', '3-5 days', '1 week', '2+ weeks')),
+  lat numeric,
+  lng numeric,
   created_at timestamptz not null default now()
 );
 
@@ -27,14 +29,21 @@ alter table destinations add column if not exists country_region text not null d
 alter table destinations add column if not exists budget_level text not null default 'Standard';
 alter table destinations add column if not exists travel_styles text[] not null default '{}';
 alter table destinations add column if not exists recommended_duration text not null default '3-5 days';
+alter table destinations add column if not exists lat numeric;
+alter table destinations add column if not exists lng numeric;
 
 create table if not exists destination_attractions (
   id text primary key,
   destination_id text not null references destinations(id) on delete cascade,
   name text not null,
   visit_time text,
-  image text
+  image text,
+  lat numeric,
+  lng numeric
 );
+
+alter table destination_attractions add column if not exists lat numeric;
+alter table destination_attractions add column if not exists lng numeric;
 
 create table if not exists itineraries (
   id uuid primary key default gen_random_uuid(),

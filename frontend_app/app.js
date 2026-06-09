@@ -304,8 +304,98 @@ const destinationMetadata = {
   "iceland-ring-road": { countryRegion: "Iceland", budgetLevel: "Premium", travelStyles: ["Nature", "Adventure"], recommendedDuration: "2+ weeks" }
 };
 
+const destinationCoordinates = {
+  kyoto: { lat: 35.0116, lng: 135.7681 },
+  tokyo: { lat: 35.6762, lng: 139.6503 },
+  santorini: { lat: 36.3932, lng: 25.4615 },
+  "costa-rica": { lat: 10.4712, lng: -84.6453 },
+  bali: { lat: -8.3405, lng: 115.0920 },
+  maui: { lat: 20.7984, lng: -156.3319 },
+  interlaken: { lat: 46.6863, lng: 7.8632 },
+  osaka: { lat: 34.6937, lng: 135.5023 },
+  barcelona: { lat: 41.3874, lng: 2.1686 },
+  queenstown: { lat: -45.0312, lng: 168.6626 },
+  paris: { lat: 48.8566, lng: 2.3522 },
+  bangkok: { lat: 13.7563, lng: 100.5018 },
+  vancouver: { lat: 49.2827, lng: -123.1207 },
+  "iceland-ring-road": { lat: 64.9631, lng: -19.0208 }
+};
+
+const attractionCoordinates = {
+  kyoto: {
+    fushimi: { lat: 34.9671, lng: 135.7727 },
+    kiyomizu: { lat: 34.9949, lng: 135.7850 },
+    arashiyama: { lat: 35.0172, lng: 135.6710 }
+  },
+  tokyo: {
+    museum: { lat: 35.7188, lng: 139.7765 },
+    shinjuku: { lat: 35.6852, lng: 139.7101 }
+  },
+  santorini: {
+    "oia-sunset": { lat: 36.4618, lng: 25.3753 },
+    "fira-caldera": { lat: 36.4167, lng: 25.4333 },
+    "red-beach": { lat: 36.3486, lng: 25.3940 }
+  },
+  "costa-rica": {
+    "arenal-volcano": { lat: 10.4627, lng: -84.7032 },
+    "la-fortuna-waterfall": { lat: 10.4400, lng: -84.6700 },
+    "mistico-bridges": { lat: 10.4877, lng: -84.7554 }
+  },
+  bali: {
+    "uluwatu-temple": { lat: -8.8291, lng: 115.0849 },
+    "ubud-rice-terraces": { lat: -8.4319, lng: 115.2794 },
+    "seminyak-beach": { lat: -8.6913, lng: 115.1577 }
+  },
+  maui: {
+    haleakala: { lat: 20.7097, lng: -156.2533 },
+    "road-to-hana": { lat: 20.7557, lng: -155.9874 },
+    "kaanapali-beach": { lat: 20.9175, lng: -156.6966 }
+  },
+  interlaken: {
+    "harder-kulm": { lat: 46.6976, lng: 7.8518 },
+    "lake-brienz": { lat: 46.7269, lng: 8.0336 },
+    jungfraujoch: { lat: 46.5475, lng: 7.9854 }
+  },
+  osaka: {
+    dotonbori: { lat: 34.6687, lng: 135.5014 },
+    "kuromon-market": { lat: 34.6651, lng: 135.5065 },
+    "osaka-castle": { lat: 34.6873, lng: 135.5259 }
+  },
+  barcelona: {
+    "sagrada-familia": { lat: 41.4036, lng: 2.1744 },
+    "park-guell": { lat: 41.4145, lng: 2.1527 },
+    "gothic-quarter": { lat: 41.3839, lng: 2.1763 }
+  },
+  queenstown: {
+    "skyline-queenstown": { lat: -45.0264, lng: 168.6587 },
+    "milford-sound": { lat: -44.6716, lng: 167.9256 },
+    "lake-wakatipu": { lat: -45.0740, lng: 168.5187 }
+  },
+  paris: {
+    louvre: { lat: 48.8606, lng: 2.3376 },
+    "eiffel-tower": { lat: 48.8584, lng: 2.2945 },
+    montmartre: { lat: 48.8867, lng: 2.3431 }
+  },
+  bangkok: {
+    "grand-palace": { lat: 13.7500, lng: 100.4913 },
+    "wat-arun": { lat: 13.7437, lng: 100.4889 },
+    chatuchak: { lat: 13.7990, lng: 100.5512 }
+  },
+  vancouver: {
+    "stanley-park": { lat: 49.3043, lng: -123.1443 },
+    "granville-island": { lat: 49.2712, lng: -123.1340 },
+    capilano: { lat: 49.3429, lng: -123.1149 }
+  },
+  "iceland-ring-road": {
+    skogafoss: { lat: 63.5321, lng: -19.5114 },
+    jokulsarlon: { lat: 64.0784, lng: -16.2306 },
+    "vik-beach": { lat: 63.4186, lng: -19.0060 }
+  }
+};
+
 function enrichDestination(destination) {
   const metadata = destinationMetadata[destination.id] || {};
+  const attractionCoordinateMap = attractionCoordinates[destination.id] || {};
   return {
     countryRegion: destination.location?.split(", ").at(-1) || "",
     budgetLevel: "Standard",
@@ -313,26 +403,38 @@ function enrichDestination(destination) {
     recommendedDuration: "3-5 days",
     keyAttractions: (destination.attractions || []).map((item) => item.name),
     ...destination,
-    ...metadata
+    ...metadata,
+    coordinates: destination.coordinates || destinationCoordinates[destination.id],
+    attractions: (destination.attractions || []).map((item) => ({
+      ...item,
+      coordinates: item.coordinates || attractionCoordinateMap[item.id]
+    }))
   };
 }
 
 function mergeDestinationData(primary, fallback) {
   if (!fallback) return enrichDestination(primary);
   const enrichedFallback = enrichDestination(fallback);
+  const enrichedPrimary = enrichDestination(primary);
   return {
     ...enrichedFallback,
-    ...primary,
-    countryRegion: enrichedFallback.countryRegion || primary.countryRegion,
-    budgetLevel: enrichedFallback.budgetLevel || primary.budgetLevel,
-    travelStyles: enrichedFallback.travelStyles?.length ? enrichedFallback.travelStyles : primary.travelStyles || [],
-    recommendedDuration: enrichedFallback.recommendedDuration || primary.recommendedDuration,
-    keyAttractions: enrichedFallback.keyAttractions?.length ? enrichedFallback.keyAttractions : primary.keyAttractions || []
+    ...enrichedPrimary,
+    countryRegion: enrichedFallback.countryRegion || enrichedPrimary.countryRegion,
+    budgetLevel: enrichedFallback.budgetLevel || enrichedPrimary.budgetLevel,
+    travelStyles: enrichedFallback.travelStyles?.length ? enrichedFallback.travelStyles : enrichedPrimary.travelStyles || [],
+    recommendedDuration: enrichedFallback.recommendedDuration || enrichedPrimary.recommendedDuration,
+    keyAttractions: enrichedFallback.keyAttractions?.length ? enrichedFallback.keyAttractions : enrichedPrimary.keyAttractions || [],
+    coordinates: enrichedFallback.coordinates || enrichedPrimary.coordinates,
+    attractions: enrichedFallback.attractions?.length ? enrichedFallback.attractions : enrichedPrimary.attractions || []
   };
 }
 
 seed.destinations = [...seed.destinations, ...additionalDestinations].map(enrichDestination);
 homeExtraRecommendations = homeExtraRecommendations.map(enrichDestination);
+
+function localDestinationById(id) {
+  return [...seed.destinations, ...homeExtraRecommendations].find((item) => item.id === id) || null;
+}
 
 const API_BASE = "http://localhost:4174/api";
 const TODAY = formatDateValue(new Date());
@@ -403,6 +505,10 @@ const state = {
 const app = document.getElementById("app");
 let toastTimer = 0;
 let codeTimer = 0;
+let leafletMapInstance = null;
+let leafletTileErrorCount = 0;
+let leafletContextKey = "";
+let leafletViewState = null;
 
 function icon(name) {
   return `<span class="material-symbols-outlined">${name}</span>`;
@@ -510,7 +616,7 @@ function saveLocalPreferenceExtensions(preferences = state.preferences) {
 
 function applyBootstrap(data) {
   state.user = data.user;
-  state.destinations = data.destinations || [];
+  state.destinations = (data.destinations || []).map((item) => mergeDestinationData(item, localDestinationById(item.id)));
   state.itineraries = (data.itineraries || []).map(normalizeItineraryDays);
   const localPreferenceExtensions = readLocalPreferenceExtensions();
   state.preferences = { ...state.preferences, ...(data.preferences || {}), ...localPreferenceExtensions };
@@ -520,7 +626,7 @@ function applyBootstrap(data) {
     ? state.preferences.preferenceTags
     : [...new Set([...state.preferences.interests, ...state.preferences.destinations])];
   state.preferences.transport = state.preferences.transport || [];
-  state.savedDestinations = data.savedDestinations || [];
+  state.savedDestinations = (data.savedDestinations || []).map((item) => mergeDestinationData(item, localDestinationById(item.destinationId || item.id)));
   state.travelHistory = data.travelHistory || [];
   state.selectedDestination = state.destinations.find((item) => item.id === state.selectedDestinationId) || state.destinations[0] || null;
   state.selectedItineraryId = state.selectedItineraryId || state.itineraries[0]?.id || "";
@@ -884,16 +990,50 @@ function suggestedPlanItems(destination, maxDays = 3) {
   }));
 }
 
-const mapPointPositions = [
-  { left: 82, top: 266 },
-  { left: 192, top: 190 },
-  { left: 292, top: 224 },
-  { left: 142, top: 112 },
-  { left: 242, top: 318 }
-];
-
 function normalizeStopName(value) {
   return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+function hasCoordinates(value) {
+  return Number.isFinite(value?.lat) && Number.isFinite(value?.lng);
+}
+
+function offsetCoordinates(base, index = 0) {
+  if (!hasCoordinates(base)) return null;
+  const offsets = [
+    { lat: 0.012, lng: 0.010 },
+    { lat: -0.010, lng: 0.014 },
+    { lat: 0.014, lng: -0.012 },
+    { lat: -0.012, lng: -0.010 },
+    { lat: 0.020, lng: 0.004 }
+  ];
+  const offset = offsets[index % offsets.length];
+  return { lat: base.lat + offset.lat, lng: base.lng + offset.lng };
+}
+
+function attractionByStop(destination, title) {
+  const normalizedTitle = normalizeStopName(title);
+  return (destination?.attractions || []).find((item) => normalizeStopName(item.name) === normalizedTitle) || null;
+}
+
+function pointCoordinates(destination, attraction, index = 0) {
+  if (hasCoordinates(attraction?.coordinates)) return attraction.coordinates;
+  if (hasCoordinates(destination?.coordinates)) return offsetCoordinates(destination.coordinates, index);
+  return null;
+}
+
+function createMapPoint(point) {
+  if (!hasCoordinates(point.coordinates)) return null;
+  const { coordinates, ...rest } = point;
+  return {
+    ...rest,
+    lat: coordinates.lat,
+    lng: coordinates.lng
+  };
+}
+
+function mapContextKey(context) {
+  return `${context.mode}:${context.destination?.id || ""}:${state.mapItineraryId || ""}`;
 }
 
 function mapContext() {
@@ -901,26 +1041,31 @@ function mapContext() {
     const trip = state.itineraries.find((item) => item.id === state.mapItineraryId) || nearestMapItinerary() || selectedItinerary();
     const destination = destinationById(trip?.destinationId) || destinationById(state.selectedDestinationId);
     const plannedNames = new Set((trip?.items || []).map((item) => normalizeStopName(item.title)));
-    const plannedPoints = (trip?.items || []).map((item, index) => ({
-      id: item.id || `route-${index}`,
-      title: item.title,
-      subtitle: `Already in timeline · Day ${item.day || 1} · ${item.time || "Time TBD"}`,
-      duration: item.note?.match(/·\s*(.+)$/)?.[1] || "Scheduled stop",
-      day: item.day || 1,
-      time: item.time || "09:00",
-      location: item.location || trip.destination,
-      note: item.note || "Already in itinerary timeline",
-      tripId: trip?.id || "",
-      destinationId: destination?.id || trip?.destinationId || "",
-      image: item.image || destination?.image || images.tokyo,
-      material: index === 0 ? "flag" : "place",
-      type: "route",
-      canAdd: false,
-      ...mapPointPositions[index % mapPointPositions.length]
-    }));
+    const plannedPoints = (trip?.items || [])
+      .map((item, index) => {
+        const matchedAttraction = attractionByStop(destination, item.title);
+        return createMapPoint({
+          id: item.id || `route-${index}`,
+          title: item.title,
+          subtitle: `Already in timeline · Day ${item.day || 1} · ${item.time || "Time TBD"}`,
+          duration: item.note?.match(/·\s*(.+)$/)?.[1] || "Scheduled stop",
+          day: item.day || 1,
+          time: item.time || "09:00",
+          location: item.location || trip.destination,
+          note: item.note || "Already in itinerary timeline",
+          tripId: trip?.id || "",
+          destinationId: destination?.id || trip?.destinationId || "",
+          image: item.image || matchedAttraction?.image || destination?.image || images.tokyo,
+          material: index === 0 ? "flag" : "place",
+          type: "route",
+          canAdd: false,
+          coordinates: pointCoordinates(destination, matchedAttraction, index)
+        });
+      })
+      .filter(Boolean);
     const availablePoints = (destination?.attractions || [])
       .filter((item) => !plannedNames.has(normalizeStopName(item.name)))
-      .map((item, index) => ({
+      .map((item, index) => createMapPoint({
         id: `available-${item.id || normalizeStopName(item.name)}`,
         title: item.name,
         subtitle: `${item.time || "Suggested visit"} · Available key attraction`,
@@ -935,72 +1080,77 @@ function mapContext() {
         material: "attractions",
         type: "available",
         canAdd: true,
-        ...mapPointPositions[(plannedPoints.length + index) % mapPointPositions.length]
-      }));
-    return {
+        coordinates: pointCoordinates(destination, item, plannedPoints.length + index)
+      }))
+      .filter(Boolean);
+    const itineraryContext = {
       mode: "itinerary",
       title: trip?.title || "Itinerary Route",
       subtitle: trip ? `${trip.destination} · ${trip.dates}` : "Selected itinerary route",
       destination,
+      unavailable: !destination || !hasCoordinates(destination.coordinates),
       points: [...plannedPoints, ...availablePoints]
+    };
+    return {
+      ...itineraryContext,
+      key: mapContextKey(itineraryContext)
     };
   }
 
   const destination = destinationById(state.mapDestinationId || state.selectedDestinationId) || state.selectedDestination || state.destinations[0];
-  return {
+  const destinationPoint = destination && createMapPoint({
+    id: destination.id,
+    title: destination.title,
+    subtitle: `${destination.location} · Destination · ${destination.rating}`,
+    duration: destination.recommendedDuration || "Suggested visit",
+    day: 1,
+    time: "09:00",
+    location: destination.title,
+    note: destination.note || "Added from destination map",
+    destinationId: destination.id,
+    image: destination.image,
+    material: "location_city",
+    type: "destination",
+    canAdd: false,
+    coordinates: destination.coordinates
+  });
+  const attractionPoints = (destination?.attractions || [])
+    .map((item, index) => createMapPoint({
+      id: item.id,
+      title: item.name,
+      subtitle: `${item.time || "Suggested visit"} · Attraction`,
+      duration: item.time || "Suggested visit",
+      day: index + 1,
+      time: index === 0 ? "09:00" : index === 1 ? "10:00" : "14:00",
+      location: destination.title,
+      note: `${item.time || "Suggested"} stop added from map`,
+      destinationId: destination.id,
+      image: item.image || destination.image,
+      material: "attractions",
+      type: "attraction",
+      canAdd: false,
+      coordinates: pointCoordinates(destination, item, index)
+    }))
+    .filter(Boolean);
+  const destinationContext = {
     mode: "destination",
     title: destination?.title || "Destination Map",
     subtitle: destination ? `${destination.location} · ${destination.category}` : "Destination and attraction pins",
     destination,
-    points: [
-      destination && {
-        id: destination.id,
-        title: destination.title,
-        subtitle: `${destination.location} · Destination · ${destination.rating}`,
-        duration: destination.recommendedDuration || "Suggested visit",
-        day: 1,
-        time: "09:00",
-        location: destination.title,
-        note: destination.note || "Added from destination map",
-        destinationId: destination.id,
-        image: destination.image,
-        material: "location_city",
-        type: "destination",
-        left: 82,
-        top: 266
-      },
-      ...(destination?.attractions || []).map((item, index) => ({
-        id: item.id,
-        title: item.name,
-        subtitle: `${item.time} suggested visit · Attraction`,
-        duration: item.time || "Suggested visit",
-        day: index + 1,
-        time: index === 0 ? "09:00" : index === 1 ? "10:00" : "14:00",
-        location: destination.title,
-        note: `${item.time || "Suggested"} stop added from map`,
-        destinationId: destination.id,
-        image: item.image || destination.image,
-        material: "attractions",
-        type: "attraction",
-        ...mapPointPositions[(index + 1) % mapPointPositions.length]
-      }))
-    ].filter(Boolean)
+    unavailable: !destinationPoint,
+    points: [destinationPoint, ...attractionPoints].filter(Boolean)
+  };
+  return {
+    ...destinationContext,
+    key: mapContextKey(destinationContext)
   };
 }
 
 function selectedMapPoint(context = mapContext()) {
-  return context.points.find((point) => point.id === state.selectedMapPointId) || context.points.find((point) => point.canAdd) || context.points[0] || null;
-}
-
-function mapRouteLines(points) {
-  return points.slice(1).map((point, index) => {
-    const previous = points[index];
-    const dx = point.left - previous.left;
-    const dy = point.top - previous.top;
-    const length = Math.sqrt(dx * dx + dy * dy);
-    const angle = Math.atan2(dy, dx) * 180 / Math.PI;
-    return `<div class="route-line" style="width:${length}px;left:${previous.left + 12}px;top:${previous.top + 16}px;transform:rotate(${angle}deg)"></div>`;
-  }).join("");
+  return context.points.find((point) => point.id === state.selectedMapPointId)
+    || context.points.find((point) => context.mode === "destination" ? point.type === "destination" : point.type === "route")
+    || context.points[0]
+    || null;
 }
 
 function dateInput(id = "") {
@@ -1765,18 +1915,15 @@ function renderMap() {
     `, "map");
   }
   const context = mapContext();
-  const points = context.points.length ? context.points : [{
-    id: "placeholder",
-    title: context.title,
-    subtitle: "No route points loaded",
-    image: context.destination?.image || images.tokyo,
-    material: "place",
-    type: "destination",
-    left: 164,
-    top: 226
-  }];
-  const selectedPoint = selectedMapPoint({ ...context, points }) || points[0];
-  const routePoints = context.mode === "itinerary" ? points.filter((point) => point.type === "route") : points;
+  const points = context.points || [];
+  if (context.unavailable || !points.length) {
+    return layout(`
+      ${topbar("Map", { back: state.previousRoute === "itinerary" ? "itinerary" : "search" })}
+      ${emptyState("Location unavailable.", "This destination does not have map coordinates yet.", null, "")}
+      <button class="btn primary full section" id="retry-map">${icon("refresh")} Retry Map</button>
+    `, "map");
+  }
+  const selectedPoint = selectedMapPoint(context) || points[0];
   const availableCount = points.filter((point) => point.canAdd).length;
   const plannedCount = points.filter((point) => point.canAdd === false).length;
   return layout(`
@@ -1784,22 +1931,9 @@ function renderMap() {
       <h1>Map</h1>
       <button class="icon-btn" id="simulate-map-failure">${icon("sync_problem")}</button>
     </header>
-    <section class="map-canvas section">
-      <div class="map-district" style="left:16px;top:74px;width:92px;height:78px"></div>
-      <div class="map-district" style="left:124px;top:70px;width:112px;height:92px"></div>
-      <div class="map-district" style="left:252px;top:78px;width:88px;height:86px"></div>
-      <div class="map-district" style="left:28px;top:188px;width:106px;height:104px"></div>
-      <div class="map-district" style="left:154px;top:206px;width:84px;height:90px"></div>
-      <div class="map-district" style="left:260px;top:194px;width:74px;height:112px"></div>
-      <div class="map-park" style="left:38px;top:318px;width:116px;height:76px"></div>
-      <div class="map-water" style="right:-22px;top:318px;width:126px;height:46px;transform:rotate(-28deg)"></div>
-      <div class="map-water" style="left:-26px;top:410px;width:150px;height:38px;transform:rotate(18deg)"></div>
-      <div class="map-road major" style="width:360px;left:8px;top:176px;transform:rotate(8deg)"></div>
-      <div class="map-road major" style="width:338px;left:18px;top:306px;transform:rotate(-13deg)"></div>
-      <div class="map-road" style="width:250px;left:88px;top:95px;transform:rotate(62deg)"></div>
-      <div class="map-road" style="width:230px;left:48px;top:252px;transform:rotate(-42deg)"></div>
-      <div class="map-road" style="width:194px;left:160px;top:248px;transform:rotate(84deg)"></div>
-      ${mapRouteLines(routePoints)}
+    <section class="map-canvas real-map section">
+      <div id="leaflet-map" class="leaflet-map" role="application" aria-label="${escapeHtml(context.title)} map"></div>
+      <div class="map-loading">Loading map...</div>
       <div class="route-summary">
         <div class="row between">
           <strong>${escapeHtml(context.title)}</strong>
@@ -1807,18 +1941,6 @@ function renderMap() {
         </div>
         <p class="small muted" style="margin:4px 0 0">${context.mode === "itinerary" ? `${plannedCount} planned · ${availableCount} available` : `${points.length} point${points.length === 1 ? "" : "s"}`} · current location shown</p>
       </div>
-      <div class="map-control-stack">
-        <button class="map-control" aria-label="Zoom in">${icon("add")}</button>
-        <button class="map-control" aria-label="Zoom out">${icon("remove")}</button>
-        <button class="map-control" aria-label="Current location">${icon("my_location")}</button>
-      </div>
-      ${points.map((point, index) => `
-        <button class="pin ${point.type === "destination" ? "hotel" : point.type === "route" ? "transit" : point.type === "available" ? "available" : ""} ${selectedPoint.id === point.id ? "active" : ""}" type="button" data-map-point="${point.id}" style="left:${point.left}px;top:${point.top}px" aria-label="${escapeHtml(point.title)}">${icon(point.material)}</button>
-        <button class="route-stop ${selectedPoint.id === point.id ? "active" : ""}" type="button" data-map-point="${point.id}" style="left:${point.left - 6}px;top:${point.top - 6}px" aria-label="Select ${escapeHtml(point.title)}">${index + 1}</button>
-        ${selectedPoint.id === point.id ? `<div class="map-label" style="left:${Math.max(8, point.left - 36)}px;top:${Math.max(52, point.top - 32)}px">${escapeHtml(point.title)}</div>` : ""}
-      `).join("")}
-      <div class="pin current" style="left:38px;top:118px">${icon("near_me")}</div>
-      <div class="map-label" style="left:54px;top:150px">You are here</div>
       <article class="map-sheet">
         <div class="row">
           <img class="thumb" src="${selectedPoint.image}" alt="${escapeHtml(selectedPoint.title)}">
@@ -1828,7 +1950,7 @@ function renderMap() {
           </div>
         </div>
         <div class="button-row" style="margin-top:12px">
-          ${selectedPoint.canAdd === false ? `<button class="btn full" disabled>Already in Timeline</button>` : `<button class="btn primary full" data-route="addTrip" data-id="${selectedPoint.destinationId || context.destination?.id || state.selectedDestinationId}" data-map-point="${selectedPoint.id}" ${context.mode === "itinerary" ? `data-itinerary-id="${state.mapItineraryId}"` : ""}>Add</button>`}
+          ${selectedPoint.type === "available" && selectedPoint.canAdd ? `<button class="btn primary full" data-route="addTrip" data-id="${selectedPoint.destinationId || context.destination?.id || state.selectedDestinationId}" data-map-point="${selectedPoint.id}" ${context.mode === "itinerary" ? `data-itinerary-id="${state.mapItineraryId}"` : ""}>Add</button>` : ""}
           <button class="btn full" data-route="detail" data-id="${context.destination?.id || state.selectedDestinationId}">Details</button>
         </div>
       </article>
@@ -2076,11 +2198,139 @@ const routes = {
   states: renderStates
 };
 
+function destroyLeafletMap() {
+  if (leafletMapInstance) {
+    leafletMapInstance.remove();
+    leafletMapInstance = null;
+  }
+}
+
+function markerIcon(point, selected) {
+  const material = point.type === "destination" ? "location_city" : point.type === "route" ? point.material || "place" : point.type === "current" ? "near_me" : "attractions";
+  return L.divIcon({
+    className: "",
+    iconSize: [34, 34],
+    iconAnchor: [17, 17],
+    popupAnchor: [0, -18],
+    html: `<div class="leaflet-map-marker ${point.type} ${selected ? "selected" : ""}">${icon(material)}</div>`
+  });
+}
+
+function initLeafletMap() {
+  const container = document.getElementById("leaflet-map");
+  if (state.route !== "map" || state.mapFailed || !container) return;
+  if (!window.L) {
+    state.mapFailed = true;
+    render();
+    return;
+  }
+
+  const context = mapContext();
+  const points = (context.points || []).filter((point) => hasCoordinates(point));
+  if (context.unavailable || !points.length) return;
+
+  if (leafletContextKey !== context.key) {
+    leafletTileErrorCount = 0;
+    leafletViewState = null;
+    leafletContextKey = context.key;
+  }
+
+  destroyLeafletMap();
+
+  const selectedPoint = selectedMapPoint({ ...context, points }) || points[0];
+  const initialCenter = leafletViewState?.center
+    ? [leafletViewState.center.lat, leafletViewState.center.lng]
+    : [selectedPoint.lat, selectedPoint.lng];
+  const initialZoom = leafletViewState?.zoom || (context.mode === "itinerary" ? 12 : 13);
+  const map = L.map(container, {
+    zoomControl: true,
+    attributionControl: true
+  }).setView(initialCenter, initialZoom);
+  leafletMapInstance = map;
+
+  const tileLayer = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  });
+  tileLayer.on("tileerror", () => {
+    leafletTileErrorCount += 1;
+    if (leafletTileErrorCount >= 4 && state.route === "map") {
+      state.mapFailed = true;
+      destroyLeafletMap();
+      render();
+    }
+  });
+  tileLayer.addTo(map);
+
+  const markerBounds = [];
+  points.forEach((point) => {
+    const marker = L.marker([point.lat, point.lng], {
+      icon: markerIcon(point, point.id === selectedPoint.id),
+      title: point.title
+    }).addTo(map);
+    marker.bindTooltip(point.title, { direction: "top", offset: [0, -14] });
+    marker.on("click", () => {
+      leafletViewState = {
+        center: map.getCenter(),
+        zoom: map.getZoom()
+      };
+      state.selectedMapPointId = point.id;
+      render();
+    });
+    markerBounds.push([point.lat, point.lng]);
+  });
+
+  const routePoints = context.mode === "itinerary" ? points.filter((point) => point.type === "route") : [];
+  if (routePoints.length > 1) {
+    L.polyline(routePoints.map((point) => [point.lat, point.lng]), {
+      color: "#00aeee",
+      weight: 5,
+      opacity: 0.88
+    }).addTo(map);
+  }
+
+  const currentCoordinates = offsetCoordinates({ lat: points[0].lat, lng: points[0].lng }, 4);
+  if (currentCoordinates) {
+    L.marker([currentCoordinates.lat, currentCoordinates.lng], {
+      icon: markerIcon({ type: "current" }, false),
+      title: "Current location"
+    }).addTo(map).bindTooltip("You are here", { direction: "bottom", offset: [0, 12] });
+    markerBounds.push([currentCoordinates.lat, currentCoordinates.lng]);
+  }
+
+  const fitMapToContent = () => {
+    if (state.route !== "map" || leafletMapInstance !== map) return;
+    map.invalidateSize(true);
+    if (leafletViewState) {
+      map.setView(initialCenter, initialZoom, { animate: false });
+    } else if (markerBounds.length > 1) {
+      map.fitBounds(markerBounds, {
+        paddingTopLeft: [18, 78],
+        paddingBottomRight: [18, 24],
+        maxZoom: 14,
+        animate: false
+      });
+    }
+    container.closest(".map-canvas")?.classList.add("leaflet-ready");
+  };
+
+  window.requestAnimationFrame(() => {
+    fitMapToContent();
+    window.setTimeout(fitMapToContent, 120);
+  });
+}
+
 function render() {
   const view = routes[state.route] || renderLogin;
+  if (state.route !== "map" || state.mapFailed) {
+    destroyLeafletMap();
+  }
   app.innerHTML = view();
   attachImageFallbacks();
   attachHandlers();
+  if (state.route === "map" && !state.mapFailed) {
+    window.requestAnimationFrame(initLeafletMap);
+  }
 }
 
 async function openResults(query, options = {}) {
@@ -2273,6 +2523,9 @@ function attachHandlers() {
       }
       if (route === "map") {
         state.mapFailed = false;
+        leafletTileErrorCount = 0;
+        leafletViewState = null;
+        leafletContextKey = "";
         if (mapMode === "itinerary") {
           const trip = selectedItinerary();
           state.mapMode = "itinerary";
@@ -2385,6 +2638,8 @@ function attachHandlers() {
   if (retryMap) {
     retryMap.addEventListener("click", () => {
       state.mapFailed = false;
+      leafletTileErrorCount = 0;
+      leafletViewState = null;
       render();
     });
   }
@@ -2393,6 +2648,7 @@ function attachHandlers() {
   if (simulateMapFailure) {
     simulateMapFailure.addEventListener("click", () => {
       state.mapFailed = true;
+      destroyLeafletMap();
       render();
     });
   }
