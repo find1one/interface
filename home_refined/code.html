@@ -1,0 +1,261 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dcd9d9",
+                    "inverse-surface": "#313030",
+                    "on-surface": "#1c1b1b",
+                    "primary-fixed-dim": "#82cfff",
+                    "tertiary-container": "#ea8c21",
+                    "on-tertiary-container": "#572f00",
+                    "on-surface-variant": "#3e4850",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#001e2d",
+                    "on-error-container": "#93000a",
+                    "secondary": "#3a637c",
+                    "secondary-fixed-dim": "#a3cce8",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-container-highest": "#e5e2e1",
+                    "inverse-primary": "#82cfff",
+                    "surface-variant": "#e5e2e1",
+                    "on-tertiary-fixed": "#2d1600",
+                    "primary-container": "#00aeef",
+                    "secondary-container": "#b9e2ff",
+                    "surface-container-high": "#ebe7e7",
+                    "background": "#fcf9f8",
+                    "outline": "#6e7881",
+                    "on-primary-fixed": "#001e2d",
+                    "on-secondary": "#ffffff",
+                    "primary": "#00658d",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#bdc8d1",
+                    "surface-bright": "#fcf9f8",
+                    "primary-fixed": "#c6e7ff",
+                    "surface-container": "#f0edec",
+                    "on-tertiary-fixed-variant": "#6b3b00",
+                    "tertiary": "#8d4f00",
+                    "on-secondary-container": "#3d657e",
+                    "surface-container-low": "#f6f3f2",
+                    "surface": "#fcf9f8",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#00658d",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#ffdcc0",
+                    "tertiary-fixed-dim": "#ffb876",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#c6e7ff",
+                    "on-primary-fixed-variant": "#004c6b",
+                    "on-primary-container": "#003e58",
+                    "on-secondary-fixed-variant": "#204b63",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-margin": "16px",
+                    "md": "12px",
+                    "gutter": "12px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "xl": "24px",
+                    "sm": "8px",
+                    "lg": "16px"
+            },
+            "fontFamily": {
+                    "title-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "numeric-data": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "numeric-data": ["16px", {"lineHeight": "1", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-surface border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 transition-colors duration-200 ease-in-out flex justify-between items-center w-full px-container-margin h-16">
+<div class="flex items-center gap-md">
+<img alt="User profile photo" class="w-8 h-8 rounded-full border border-outline-variant" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBt7mFSFtRSjBBadszVh9KBlPoMuq8pc1Os_45gayfuStUSr-opU-Yi750xuvSItJxWfeTsULal2nN4FlCgbC2V94wgtGnpcBoGhqnadGuPGdN3hzujNNjE5DQ5zKZgeN93GiGnh-wybyII77wH0EDBWPkzutdwSM513DjI0vd3psOSe49zcPX-kmrAMzbmDPf_gbY7imezTm_icRb35NyPTVuEwy3UzZqkY_-Bs_bCNo2V_WUalw16pIGxMMIMGvdWdlIgQ3GSUn0">
+<span class="font-display-lg text-display-lg font-bold text-primary dark:text-primary-container">Skybound</span>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-inverse-surface p-2 rounded-lg transition-colors">notifications</button>
+</div>
+</header>
+<main class="pb-24 max-w-5xl mx-auto">
+<!-- Search & Filters -->
+<section class="px-container-margin pt-xl">
+<div class="relative mb-lg">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-surface border border-outline-variant rounded-lg pl-10 pr-md py-2 text-body-md focus:border-primary-container focus:ring-0 transition-all outline-none" placeholder="Where to next?" type="text">
+</div>
+<div class="flex gap-sm overflow-x-auto no-scrollbar pb-xs">
+<button class="px-md py-1.5 bg-secondary-container text-on-secondary-container rounded-lg font-label-caps text-label-caps whitespace-nowrap border border-primary-container/20">ALL TRIPS</button>
+<button class="px-md py-1.5 bg-surface-container-low text-on-surface-variant rounded-lg font-label-caps text-label-caps whitespace-nowrap border border-outline-variant hover:border-primary-container transition-colors">BEACH</button>
+<button class="px-md py-1.5 bg-surface-container-low text-on-surface-variant rounded-lg font-label-caps text-label-caps whitespace-nowrap border border-outline-variant hover:border-primary-container transition-colors">MOUNTAIN</button>
+<button class="px-md py-1.5 bg-surface-container-low text-on-surface-variant rounded-lg font-label-caps text-label-caps whitespace-nowrap border border-outline-variant hover:border-primary-container transition-colors">CITY</button>
+<button class="px-md py-1.5 bg-surface-container-low text-on-surface-variant rounded-lg font-label-caps text-label-caps whitespace-nowrap border border-outline-variant hover:border-primary-container transition-colors">CABINS</button>
+</div>
+</section>
+<!-- Upcoming Trip Widget -->
+<section class="px-container-margin pt-xl">
+<div class="mb-sm flex items-center justify-between">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant">UPCOMING TRIP</h2>
+<a class="font-label-caps text-label-caps text-primary hover:underline" href="#">MANAGE</a>
+</div>
+<div class="bg-surface border border-outline-variant rounded-xl p-md flex items-center gap-md">
+<div class="w-20 h-20 rounded-lg overflow-hidden bg-surface-container flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A detailed, high-resolution aerial view of Tokyo's city skyline at twilight. The scene is dominated by a cool, professional blue and white color palette, reflecting a modern light-mode UI. Sharp lines of skyscrapers and the iconic Tokyo Tower glow softly against a crisp, clear sky, emphasizing precision and luxury travel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2vfyFg568xSeVQgRNG9o2IY_J03tyLh6cSQZF806tFYYXUNxdP8xY1J3_PRv5l1bn2GjDL1l-IjhPRHye2DdGPHMeYY0cBmpsFjiW2kwDVtVfVfWiTizrHCUmCrBFz33dIwyaZOXPTugNlOGqJ3dU2bgYHld9tfvDNySKOBpOE14dNINYWxsLEhFx-7dgoCFiG_7wpkr7V-1vL9WYassJfUeblW2f4dO8z5DfBPULjuW57U2SllX3gZUV5Wm5ooNr2GYhT4fcvp8">
+</div>
+<div class="flex-grow min-w-0">
+<div class="flex items-center gap-xs mb-1">
+<span class="bg-primary-container/10 text-primary-container px-2 py-0.5 rounded text-[10px] font-bold tracking-wider uppercase">Confirmed</span>
+</div>
+<h3 class="font-title-sm text-title-sm truncate">Tokyo, Japan</h3>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">calendar_today</span>
+<span class="font-numeric-data text-numeric-data text-[13px]">April 12 - 20, 2024</span>
+</div>
+</div>
+<div class="flex flex-col items-end gap-1">
+<span class="font-label-caps text-label-caps text-on-surface-variant">GATE</span>
+<span class="font-numeric-data text-numeric-data text-primary">A24</span>
+</div>
+</div>
+</section>
+<!-- Recommended Section -->
+<section class="px-container-margin pt-xl">
+<div class="mb-md flex items-center justify-between">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant">RECOMMENDED FOR YOU</h2>
+<button class="material-symbols-outlined text-primary">tune</button>
+</div>
+<!-- Bento Grid / Asymmetric List -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Card 1 -->
+<div class="bg-surface border border-outline-variant rounded-lg overflow-hidden group hover:border-primary transition-colors">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A stunning wide-angle view of Oia, Santorini, showing white-washed buildings with vibrant blue domes overlooking the deep blue Aegean Sea. The lighting is bright and clear, capturing the high-end modernist aesthetic of professional travel photography. The color palette is strictly white, azure blue, and soft grey, maintaining a clean and minimalist visual style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtvYGuhrhG61NkXeFiH83aldHlIkXvhNPri-GGEvdxl5VlW17MdCNDEwPCvSGTzhdUlHlyjrzZijGTFvMBMBrvZRxtDfRaEoR9buKMQaE8EdswCIdHy9Iu-dSFxY7Ft0vdYIdXk9FWU3QmZkWTk55VaSbTdh2vhjaY1-1RzcGLzAdzWCf85z8ojWmvuR_bRWHTTQsoV3KnSGOEI9KmndngOa2lVe4YBYhZ4UYTq4_tccxMxlSZpjeiWkNyC8CfZC9LlfcV_piCOtc">
+<button class="absolute top-sm right-sm bg-white/90 p-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-primary">bookmark</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-title-sm text-title-sm">Santorini, Greece</h3>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-numeric-data text-numeric-data text-[13px]">4.9</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-md">Luxury villas &amp; volcanic views</p>
+<div class="flex justify-between items-center border-t border-outline-variant pt-md">
+<span class="font-numeric-data text-numeric-data text-primary">$420<span class="text-body-sm text-on-surface-variant font-normal"> / night</span></span>
+<button class="text-primary font-label-caps text-label-caps border border-primary px-3 py-1.5 rounded hover:bg-primary-container/10 transition-colors">BOOK NOW</button>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface border border-outline-variant rounded-lg overflow-hidden group hover:border-primary transition-colors">
+<div class="h-40 overflow-hidden relative">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A lush, verdant tropical rainforest scene in Costa Rica with mist hanging low over emerald green canopy. The image emphasizes high-density information through the intricate textures of palm leaves and exotic plants. The lighting is soft and diffused, creating a serene and dependable professional mood with a palette of deep greens and earthy browns." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe4o60Ly0TVLz18qsJVnnP6B0ZUf10yFs13JURfhcebNJRVomVEFNaQXgZPNJjf40hPlef3UwFF7bq7gzrSpBcNteeWMuzvqS0ben5tNCURWJUddVY9RtqmQLEFuUucJEtiuJvgWOkhDQqis8WrMZLpP69ceOc7R1_4DLYvT67P5k8Ow2rmZmoCh6v5gtH6o1MKdiYEmzX8ASAtb1TWP1RIyDoBgmx6tQnSD6LGxtHmKG3pq7lUgqv1iujzsFboq_PjBIEyEO6_Ls">
+<button class="absolute top-sm right-sm bg-white/90 p-1.5 rounded-full shadow-sm">
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">bookmark</span>
+</button>
+</div>
+<div class="p-md">
+<div class="flex justify-between items-start mb-xs">
+<h3 class="font-title-sm text-title-sm">Costa Rica</h3>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-tertiary-container text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-numeric-data text-numeric-data text-[13px]">4.7</span>
+</div>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-md">Eco-resorts &amp; biodiversity</p>
+<div class="flex justify-between items-center border-t border-outline-variant pt-md">
+<span class="font-numeric-data text-numeric-data text-primary">$185<span class="text-body-sm text-on-surface-variant font-normal"> / night</span></span>
+<button class="text-primary font-label-caps text-label-caps border border-primary px-3 py-1.5 rounded hover:bg-primary-container/10 transition-colors">BOOK NOW</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Map Action -->
+<section class="px-container-margin pt-xl">
+<div class="relative h-24 rounded-xl overflow-hidden border border-outline-variant bg-surface-container-high group cursor-pointer">
+<div class="absolute inset-0 bg-primary-container/5 group-hover:bg-primary-container/10 transition-colors"></div>
+<div class="relative h-full w-full flex items-center justify-between px-xl">
+<div class="flex flex-col">
+<span class="font-title-sm text-title-sm">Interactive Explorer</span>
+<span class="text-body-sm text-on-surface-variant">Discover destinations nearby</span>
+</div>
+<div class="flex items-center justify-center w-12 h-12 bg-primary-container text-on-primary rounded-full shadow-lg transition-transform group-hover:scale-110">
+<span class="material-symbols-outlined">map</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface dark:bg-on-surface py-2 pb-safe border-t border-outline-variant dark:border-outline z-50">
+<button class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-all duration-200 active:scale-95">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</button><button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-lg p-1">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-lg p-1">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-caps text-label-caps">Itinerary</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-lg p-1">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-label-caps">Map</span>
+</button>
+
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-lg p-1">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</button>
+</nav>
+
+
+</body></html>

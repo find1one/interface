@@ -1,0 +1,241 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Skybound | Interactive Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dcd9d9",
+                    "inverse-surface": "#313030",
+                    "on-surface": "#1c1b1b",
+                    "primary-fixed-dim": "#82cfff",
+                    "tertiary-container": "#ea8c21",
+                    "on-tertiary-container": "#572f00",
+                    "on-surface-variant": "#3e4850",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#001e2d",
+                    "on-error-container": "#93000a",
+                    "secondary": "#3a637c",
+                    "secondary-fixed-dim": "#a3cce8",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-container-highest": "#e5e2e1",
+                    "inverse-primary": "#82cfff",
+                    "surface-variant": "#e5e2e1",
+                    "on-tertiary-fixed": "#2d1600",
+                    "primary-container": "#00aeef",
+                    "secondary-container": "#b9e2ff",
+                    "surface-container-high": "#ebe7e7",
+                    "background": "#fcf9f8",
+                    "outline": "#6e7881",
+                    "on-primary-fixed": "#001e2d",
+                    "on-secondary": "#ffffff",
+                    "primary": "#00658d",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#bdc8d1",
+                    "surface-bright": "#fcf9f8",
+                    "primary-fixed": "#c6e7ff",
+                    "surface-container": "#f0edec",
+                    "on-tertiary-fixed-variant": "#6b3b00",
+                    "tertiary": "#8d4f00",
+                    "on-secondary-container": "#3d657e",
+                    "surface-container-low": "#f6f3f2",
+                    "surface": "#fcf9f8",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#00658d",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#ffdcc0",
+                    "tertiary-fixed-dim": "#ffb876",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#c6e7ff",
+                    "on-primary-fixed-variant": "#004c6b",
+                    "on-primary-container": "#003e58",
+                    "on-secondary-fixed-variant": "#204b63",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-margin": "16px",
+                    "md": "12px",
+                    "gutter": "12px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "xl": "24px",
+                    "sm": "8px",
+                    "lg": "16px"
+            },
+            "fontFamily": {
+                    "title-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "numeric-data": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "numeric-data": ["16px", {"lineHeight": "1", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .map-bg {
+            background: linear-gradient(rgba(252, 249, 248, 0.9), rgba(252, 249, 248, 0.9)), url('https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2074&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(100%) contrast(1.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(1000px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-hidden h-screen flex flex-col">
+<!-- Top AppBar (JSON Component) -->
+<header class="bg-surface dark:bg-on-surface border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 transition-colors duration-200 ease-in-out flex justify-between items-center w-full px-container-margin h-16">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="A professional close-up studio portrait of a modern traveler in a high-key lighting environment. The subject is a male with a clean, approachable appearance, set against a neutral light grey background that aligns with the professional aeronautics-inspired UI. The lighting is soft and even, highlighting functional clarity and precision in the image quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJdZZKJGn5ObUzAemZNHtO0H5h-ipxeRq6gWc56rZ2Kk9NLhESCV5KnKZBP3DLF5cofB4eEVPX7QU7gEVQJZrcB7qt7cAMLWlMZ4oESY_kuCW8UeoNAF6kv6qUcXKDxlTnxX4YKlGo0rpFRHEn5MUcs60VqvLXAbL7poZItr-3Re5icHBtF1DAu_NUL3b2PqkOWgUpRSFXNK2IwOxsrrWDbWHHYuKwUi7T5GWyK8I4QdIyagmm5Mm1VfkCuA4OMv039YoHLUU5Aps">
+</div>
+<h1 class="font-display-lg text-display-lg font-bold text-primary dark:text-primary-container">Skybound</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="p-2 rounded-lg hover:bg-surface-container-high dark:hover:bg-inverse-surface text-on-surface-variant dark:text-surface-variant transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</header>
+<!-- Main Map Canvas -->
+<main class="relative flex-1 overflow-hidden">
+<!-- Background Map Image -->
+<div class="absolute inset-0 map-bg" data-location="Tokyo"></div>
+<!-- Floating Search and Category Bar -->
+<div class="absolute top-lg left-container-margin right-container-margin flex flex-col gap-sm max-w-xl mx-auto z-40">
+<!-- Search Input -->
+<div class="bg-surface border border-outline-variant rounded-lg p-xs flex items-center gap-sm shadow-[0px_2px_4px_rgba(0,0,0,0.05)]">
+<span class="material-symbols-outlined text-outline ml-md">search</span>
+<input class="flex-1 bg-transparent border-none focus:ring-0 text-body-md font-body-md placeholder:text-outline py-2" placeholder="Search Tokyo..." type="text">
+<button class="px-md py-1 border-l border-outline-variant text-primary font-label-caps tracking-widest">FILTER</button>
+</div>
+<!-- Category Chips -->
+<div class="flex gap-xs overflow-x-auto no-scrollbar pb-xs">
+<button class="flex items-center gap-xs px-md py-2 bg-primary text-on-primary rounded-lg text-label-caps whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">museum</span> ATTRACTIONS
+                </button>
+<button class="flex items-center gap-xs px-md py-2 bg-surface border border-outline-variant text-on-surface rounded-lg text-label-caps whitespace-nowrap hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">hotel</span> HOTELS
+                </button>
+<button class="flex items-center gap-xs px-md py-2 bg-surface border border-outline-variant text-on-surface rounded-lg text-label-caps whitespace-nowrap hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">restaurant</span> DINING
+                </button>
+<button class="flex items-center gap-xs px-md py-2 bg-surface border border-outline-variant text-on-surface rounded-lg text-label-caps whitespace-nowrap hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[16px]">commute</span> TRANSIT
+                </button>
+</div>
+</div>
+<!-- Map Pins (Minimalist) -->
+<div class="absolute top-[40%] left-[45%] group cursor-pointer z-20">
+<div class="bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center border-2 border-surface shadow-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">museum</span>
+</div>
+<div class="absolute top-12 left-1/2 -translate-x-1/2 bg-surface border border-outline px-sm py-1 rounded-lg text-label-caps whitespace-nowrap">
+                TOKYO NATIONAL MUSEUM
+            </div>
+</div>
+<div class="absolute top-[25%] left-[20%] group cursor-pointer z-10 opacity-60">
+<div class="bg-outline text-on-surface-variant w-4 h-4 rounded-full border-2 border-surface shadow-sm"></div>
+</div>
+<div class="absolute top-[60%] left-[70%] group cursor-pointer z-10 opacity-60">
+<div class="bg-outline text-on-surface-variant w-4 h-4 rounded-full border-2 border-surface shadow-sm"></div>
+</div>
+<!-- Controls (Zoom/Location) -->
+<div class="absolute right-container-margin bottom-[400px] flex flex-col gap-sm z-30">
+<button class="bg-surface border border-outline-variant w-10 h-10 rounded-lg flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="bg-surface border border-outline-variant w-10 h-10 rounded-lg flex items-center justify-center text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+<button class="bg-surface border border-outline-variant w-10 h-10 rounded-lg flex items-center justify-center text-primary mt-md hover:bg-surface-container-high transition-colors shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">my_location</span>
+</button>
+</div>
+<!-- Bottom Sheet Preview -->
+<div class="absolute bottom-24 left-container-margin right-container-margin max-w-2xl mx-auto bg-surface border border-outline-variant rounded-xl overflow-hidden shadow-lg z-40">
+<div class="flex flex-col md:flex-row">
+<div class="w-full md:w-32 h-24 md:h-auto overflow-hidden">
+<img alt="Tokyo National Museum" class="w-full h-full object-cover" data-alt="A detailed, wide-angle shot of the Tokyo National Museum main building at dusk. The architecture is a grand blend of modern and traditional Japanese styles, illuminated by soft golden exterior floodlights. The surrounding landscape is manicured and minimalist. The image is clean and high-resolution, captured with a professional architectural photography style to match the precise UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4L6VKHOTtwJjkuUT1ZPrACrgilBhvwwHXxi4C_QXj-1W2vG7skDGPcC4ukxqCEDCMdttyJYjC_EJt9hgnna00HkCfaduvmTBpEuHbHOtGboWYT-2yOYf9gUj98shVqIzEzrr-i1gTUWopHEd7_9sj_h8sJIP6cdpCpfSKBz_VVG8CGpPUQBRmEaVeGG0VEcCwAOFAENDRYeOnM0m3TpvZtpvZPVNvJkNfnjs-y4_1kFYkC8WRY4NbYmisTEIS0umB6R1elT-qdzc">
+</div>
+<div class="p-md flex-1">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-label-caps text-tertiary tracking-widest">HISTORIC LANDMARK</span>
+<h2 class="font-title-sm text-title-sm text-on-surface mt-1">Tokyo National Museum</h2>
+</div>
+<div class="text-right">
+<div class="flex items-center gap-xs text-primary">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-numeric-data">4.8</span>
+</div>
+<span class="text-body-sm text-on-surface-variant">2.4 km away</span>
+</div>
+</div>
+<div class="mt-lg flex gap-md">
+<button class="flex-1 bg-primary text-on-primary py-2 rounded-lg font-label-caps tracking-widest hover:bg-on-primary-fixed-variant transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">add_circle</span> ADD TO TRIP
+                        </button>
+<button class="flex-1 border border-outline-variant text-on-surface py-2 rounded-lg font-label-caps tracking-widest hover:bg-surface-container-high transition-colors flex items-center justify-center gap-sm">
+<span class="material-symbols-outlined text-[18px]">directions</span> NAVIGATE
+                        </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (JSON Component) -->
+<nav class="bg-surface dark:bg-on-surface border-t border-outline-variant dark:border-outline fixed bottom-0 left-0 w-full flex justify-around items-center py-2 pb-safe z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1 rounded-lg" href="#"><span class="material-symbols-outlined">home</span><span class="font-label-caps text-label-caps mt-1">Home</span></a><a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1 rounded-lg" href="#"><span class="material-symbols-outlined">search</span><span class="font-label-caps text-label-caps mt-1">Search</span></a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-caps text-label-caps mt-1">Itinerary</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">map</span>
+<span class="font-label-caps text-label-caps mt-1">Map</span>
+</a>
+
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1 rounded-lg" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a>
+</nav>
+<!-- Map Separation Overlay (Subtle Gradient for readability of Nav) -->
+<div class="fixed bottom-16 left-0 w-full h-8 bg-gradient-to-t from-background/50 to-transparent pointer-events-none"></div>
+
+
+</body></html>

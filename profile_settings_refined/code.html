@@ -1,0 +1,281 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Skybound Travel - Profile &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-dim": "#dcd9d9",
+                      "inverse-surface": "#313030",
+                      "on-surface": "#1c1b1b",
+                      "primary-fixed-dim": "#82cfff",
+                      "tertiary-container": "#ea8c21",
+                      "on-tertiary-container": "#572f00",
+                      "on-surface-variant": "#3e4850",
+                      "on-primary": "#ffffff",
+                      "on-secondary-fixed": "#001e2d",
+                      "on-error-container": "#93000a",
+                      "secondary": "#3a637c",
+                      "secondary-fixed-dim": "#a3cce8",
+                      "inverse-on-surface": "#f3f0ef",
+                      "surface-container-highest": "#e5e2e1",
+                      "inverse-primary": "#82cfff",
+                      "surface-variant": "#e5e2e1",
+                      "on-tertiary-fixed": "#2d1600",
+                      "primary-container": "#00aeef",
+                      "secondary-container": "#b9e2ff",
+                      "surface-container-high": "#ebe7e7",
+                      "background": "#fcf9f8",
+                      "outline": "#6e7881",
+                      "on-primary-fixed": "#001e2d",
+                      "on-secondary": "#ffffff",
+                      "primary": "#00658d",
+                      "on-background": "#1c1b1b",
+                      "error-container": "#ffdad6",
+                      "outline-variant": "#bdc8d1",
+                      "surface-bright": "#fcf9f8",
+                      "primary-fixed": "#c6e7ff",
+                      "surface-container": "#f0edec",
+                      "on-tertiary-fixed-variant": "#6b3b00",
+                      "tertiary": "#8d4f00",
+                      "on-secondary-container": "#3d657e",
+                      "surface-container-low": "#f6f3f2",
+                      "surface": "#fcf9f8",
+                      "on-tertiary": "#ffffff",
+                      "surface-tint": "#00658d",
+                      "surface-container-lowest": "#ffffff",
+                      "tertiary-fixed": "#ffdcc0",
+                      "tertiary-fixed-dim": "#ffb876",
+                      "error": "#ba1a1a",
+                      "secondary-fixed": "#c6e7ff",
+                      "on-primary-fixed-variant": "#004c6b",
+                      "on-primary-container": "#003e58",
+                      "on-secondary-fixed-variant": "#204b63",
+                      "on-error": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "container-margin": "16px",
+                      "md": "12px",
+                      "gutter": "12px",
+                      "unit": "4px",
+                      "xs": "4px",
+                      "xl": "24px",
+                      "sm": "8px",
+                      "lg": "16px"
+              },
+              "fontFamily": {
+                      "title-sm": ["Plus Jakarta Sans"],
+                      "body-sm": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-md": ["Plus Jakarta Sans"],
+                      "display-lg": ["Plus Jakarta Sans"],
+                      "label-caps": ["Plus Jakarta Sans"],
+                      "numeric-data": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                      "body-sm": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                      "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "numeric-data": ["16px", {"lineHeight": "1", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar from JSON -->
+<header class="bg-surface dark:bg-on-surface border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 sticky">
+<div class="flex justify-between items-center w-full px-container-margin h-16">
+<div class="flex items-center gap-md">
+<img alt="Profile" class="w-8 h-8 rounded-full border border-outline-variant object-cover" data-alt="A professional studio headshot of a person with a friendly expression, set against a clean and neutral grey background. The lighting is soft and even, highlighting clear skin and sharp features, characteristic of high-end corporate photography. The aesthetic is modern and professional, aligning with a premium travel application's light-mode visual identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB_zq-3gZpOKtTE3z_ZutUqU4WeOmrGb3-VBtleLB2ieT8kmkf6xRlVx4srzvgSl_83m4vb6sD8WxExJWZ6fm1iNSQB8ShLOEJWL6qDeKb6yOEWgjT2QAETnjrb4k7pM0loNP4EcOsOklR2d5yH1_Ib7RrV_xAHPyEzEWjhzJXMt0XoqAv95rEQCpGxWgQTnE7b43FBZ5ZZfDEDA6v5Ws96-hVIdx_BMkFPsaSWDd_LDnTJmxF3TQfqhSXCElfIRjCFIEu5S8CAgc">
+<h1 class="font-display-lg text-display-lg font-bold text-primary dark:text-primary-container">Skybound</h1>
+</div>
+<div class="flex items-center gap-md">
+<button class="material-symbols-outlined text-primary dark:text-primary-fixed-dim hover:bg-surface-container-high dark:hover:bg-inverse-surface p-2 rounded-full transition-colors duration-200" data-icon="notifications">notifications</button>
+</div>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-container-margin py-xl space-y-xl">
+<!-- Account Section -->
+<section class="space-y-md">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant px-1">ACCOUNT</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md flex items-center justify-between">
+<div class="flex items-center gap-lg">
+<img alt="User" class="w-16 h-16 rounded-lg object-cover border border-outline-variant" data-alt="A high-resolution close-up of a person's face showing a warm, professional smile. The background is a blurred, high-end office environment with natural sunlight streaming in, creating a bright and airy atmosphere. The image uses a clean, light-mode palette with subtle blue and grey undertones to match a premium digital travel ecosystem." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4lvDRZO6jl1gcdHvQtLm5VSRKoR3nr25-gyP1jZiW30tQb1rJUNPajGqAwyGKdmP4BKFL_MUSWL4nSPGVv8WcGmWrYVQmLLTTS1sV3IMBFq9TpxSfcnbTwX0KQ_ZKTx9K9ex_Ubylc08DdBSpZRS9toFMbpzdwyg-Li6FZ-2pZcE8S-lZ4OdI3KcXK5HRYxbhJo8ueL5qk3w3F42h6XKXf8kAqQ1KLGQFgXPOhI-qd5SykYXa5vF_FeSrsKvQ-Ji_8o0C02hZ9x8">
+<div>
+<p class="font-title-sm text-title-sm text-on-surface">Alex Thompson</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">alex.thompson@skybound.io</p>
+</div>
+</div>
+<button class="px-lg py-sm bg-primary-container text-on-primary font-label-caps text-label-caps rounded-lg hover:opacity-90 transition-opacity">
+                    EDIT
+                </button>
+</div>
+</section>
+<!-- Preferences Section -->
+<section class="space-y-md">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant px-1">TRAVEL STYLE PREFERENCES</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<div class="flex flex-wrap gap-sm">
+<div class="px-md py-xs bg-secondary-container text-on-secondary-container rounded-full flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="hiking">hiking</span>
+<span class="font-label-caps text-label-caps">ADVENTURE</span>
+</div>
+<div class="px-md py-xs bg-secondary-container text-on-secondary-container rounded-full flex items-center gap-xs">
+<span class="material-symbols-outlined text-[16px]" data-icon="restaurant">restaurant</span>
+<span class="font-label-caps text-label-caps">FOODIE</span>
+</div>
+<div class="px-md py-xs bg-surface-container-high text-on-surface-variant border border-outline-variant rounded-full flex items-center gap-xs cursor-pointer hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="photo_camera">photo_camera</span>
+<span class="font-label-caps text-label-caps">PHOTOGRAPHY</span>
+</div>
+<div class="px-md py-xs bg-surface-container-high text-on-surface-variant border border-outline-variant rounded-full flex items-center gap-xs cursor-pointer hover:bg-surface-variant transition-colors">
+<span class="material-symbols-outlined text-[16px]" data-icon="add">add</span>
+<span class="font-label-caps text-label-caps">ADD INTEREST</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Settings List Section -->
+<section class="space-y-md">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant px-1">TRAVEL SETTINGS</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl divide-y divide-outline-variant">
+<!-- Item: Budget -->
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container text-primary rounded-lg">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Travel Budget</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Premium Economy / Luxury</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Item: Dietary -->
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container text-primary rounded-lg">
+<span class="material-symbols-outlined" data-icon="no_meals">no_meals</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Dietary Requirements</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Vegetarian, No Peanuts</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Item: Pace -->
+<div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer group">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container text-primary rounded-lg">
+<span class="material-symbols-outlined" data-icon="speed">speed</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Travel Pace</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Moderate (2-3 stops per day)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Notifications Section -->
+<section class="space-y-md">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant px-1">NOTIFICATIONS</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl divide-y divide-outline-variant">
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container text-secondary rounded-lg">
+<span class="material-symbols-outlined" data-icon="schedule">schedule</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Flight Delays &amp; Gates</p>
+</div>
+<div class="w-10 h-6 bg-primary-container rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full ml-auto"></div>
+</div>
+</div>
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container text-secondary rounded-lg">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Itinerary Reminders</p>
+</div>
+<div class="w-10 h-6 bg-surface-container-highest rounded-full relative flex items-center px-1">
+<div class="w-4 h-4 bg-white rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Connected Accounts -->
+<section class="space-y-md"><h2 class="font-label-caps text-label-caps text-on-surface-variant px-1">SAVED &amp; HISTORY</h2><div class="bg-surface-container-lowest border border-outline-variant rounded-xl divide-y divide-outline-variant"><div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer group"><div class="flex items-center gap-lg"><div class="w-10 h-10 flex items-center justify-center bg-surface-container text-primary rounded-lg"><span class="material-symbols-outlined" data-icon="bookmark">bookmark</span></div><p class="font-body-md text-body-md text-on-surface font-semibold">Saved Places</p></div><span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span></div><div class="flex items-center justify-between p-md hover:bg-surface-container-low transition-colors cursor-pointer group"><div class="flex items-center gap-lg"><div class="w-10 h-10 flex items-center justify-center bg-surface-container text-primary rounded-lg"><span class="material-symbols-outlined" data-icon="history">history</span></div><p class="font-body-md text-body-md text-on-surface font-semibold">Travel History</p></div><span class="material-symbols-outlined text-outline group-hover:text-primary transition-colors" data-icon="chevron_right">chevron_right</span></div></div></section><section class="space-y-md">
+<h2 class="font-label-caps text-label-caps text-on-surface-variant px-1">CONNECTED ACCOUNTS</h2>
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl divide-y divide-outline-variant">
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container text-[#1A73E8] rounded-lg">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Google Account</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Connected as alex.t@gmail.com</p>
+</div>
+</div>
+<button class="font-label-caps text-label-caps text-error">DISCONNECT</button>
+</div>
+<div class="flex items-center justify-between p-md">
+<div class="flex items-center gap-lg">
+<div class="w-10 h-10 flex items-center justify-center bg-surface-container text-[#000000] rounded-lg">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+</div>
+<div>
+<p class="font-body-md text-body-md text-on-surface font-semibold">Apple Calendar</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Sync travel dates automatically</p>
+</div>
+</div>
+<button class="font-label-caps text-label-caps text-primary">CONNECT</button>
+</div>
+</div>
+</section>
+<footer class="pt-xl pb-md text-center">
+<p class="font-label-caps text-label-caps text-outline">SKYBOUND TRAVEL V2.4.0</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">Precision Built for the Global Traveler.</p>
+</footer>
+</main>
+<!-- BottomNavBar from JSON -->
+<!-- Active State Logic: Mapping "Profile" screen to "Profile" tab -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface dark:bg-on-surface py-2 pb-safe border-t border-outline-variant dark:border-outline z-50"><div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-all duration-200 active:scale-95 cursor-pointer flex-1 py-1"><span class="material-symbols-outlined" data-icon="home">home</span><span class="font-label-caps text-label-caps">Home</span></div><div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-all duration-200 active:scale-95 cursor-pointer flex-1 py-1"><span class="material-symbols-outlined" data-icon="search">search</span><span class="font-label-caps text-label-caps">Search</span></div><div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-all duration-200 active:scale-95 cursor-pointer flex-1 py-1"><span class="material-symbols-outlined" data-icon="event_note">event_note</span><span class="font-label-caps text-label-caps">Itinerary</span></div><div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-all duration-200 active:scale-95 cursor-pointer flex-1 py-1"><span class="material-symbols-outlined" data-icon="map">map</span><span class="font-label-caps text-label-caps">Map</span></div><div class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold hover:bg-surface-container-low dark:hover:bg-inverse-surface transition-all duration-200 active:scale-95 cursor-pointer flex-1 py-1"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1" data-icon="person">person</span><span class="font-label-caps text-label-caps">Profile</span></div></nav>
+
+
+
+
+</body></html>

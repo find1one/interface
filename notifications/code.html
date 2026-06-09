@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Skybound Travel - Notifications</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "background": "#fcf9f8",
+                      "on-surface-variant": "#3e4850",
+                      "inverse-primary": "#82cfff",
+                      "on-secondary-fixed": "#001e2d",
+                      "error": "#ba1a1a",
+                      "outline-variant": "#bdc8d1",
+                      "tertiary-fixed-dim": "#ffb876",
+                      "tertiary-fixed": "#ffdcc0",
+                      "on-secondary-container": "#3d657e",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#003e58",
+                      "primary-fixed": "#c6e7ff",
+                      "surface": "#fcf9f8",
+                      "on-secondary-fixed-variant": "#204b63",
+                      "outline": "#6e7881",
+                      "secondary-fixed": "#c6e7ff",
+                      "surface-container-low": "#f6f3f2",
+                      "secondary": "#3a637c",
+                      "on-tertiary-container": "#572f00",
+                      "secondary-container": "#b9e2ff",
+                      "on-tertiary": "#ffffff",
+                      "on-tertiary-fixed-variant": "#6b3b00",
+                      "on-background": "#1c1b1b",
+                      "surface-container": "#f0edec",
+                      "on-primary-fixed-variant": "#004c6b",
+                      "surface-container-high": "#ebe7e7",
+                      "surface-dim": "#dcd9d9",
+                      "primary": "#00658d",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-primary": "#ffffff",
+                      "surface-container-highest": "#e5e2e1",
+                      "inverse-on-surface": "#f3f0ef",
+                      "error-container": "#ffdad6",
+                      "primary-fixed-dim": "#82cfff",
+                      "on-surface": "#1c1b1b",
+                      "tertiary": "#8d4f00",
+                      "surface-tint": "#00658d",
+                      "on-tertiary-fixed": "#2d1600",
+                      "secondary-fixed-dim": "#a3cce8",
+                      "inverse-surface": "#313030",
+                      "tertiary-container": "#ea8c21",
+                      "surface-bright": "#fcf9f8",
+                      "on-error": "#ffffff",
+                      "surface-variant": "#e5e2e1",
+                      "on-primary-fixed": "#001e2d",
+                      "primary-container": "#00aeef"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "unit": "4px",
+                      "container-margin": "16px",
+                      "xs": "4px",
+                      "xl": "24px",
+                      "md": "12px",
+                      "gutter": "12px",
+                      "lg": "16px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "title-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "numeric-data": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "display-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "title-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "numeric-data": [
+                              "16px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #fcf9f8; /* background */
+            -webkit-tap-highlight-color: transparent;
+        }
+        /* Custom scrollbar hiding for cleaner look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen flex flex-col w-full max-w-[390px] mx-auto relative border-x border-outline-variant/30">
+<!-- TopAppBar (From JSON Source of Truth) -->
+<!-- Applying exact style_ keys, overriding labels based on intent (Notifications) -->
+<header class="bg-surface dark:bg-surface-dim font-headline-md text-headline-md font-semibold text-primary dark:text-primary-fixed-dim top-0 border-b border-outline-variant dark:border-outline flex items-center justify-between px-md w-full h-14 sticky z-40 bg-opacity-95 backdrop-blur-sm">
+<button aria-label="Go back" class="w-11 h-11 flex items-center justify-center cursor-pointer active:scale-95 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="text-on-background truncate px-2 font-headline-md text-headline-md font-bold tracking-tight">Notifications</h1>
+<button aria-label="Settings" class="w-11 h-11 flex items-center justify-center cursor-pointer active:scale-95 text-on-surface-variant dark:text-surface-variant hover:bg-surface-container dark:hover:bg-surface-container-high transition-colors rounded-full">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">tune</span>
+</button>
+</header>
+<main class="flex-1 flex flex-col overflow-y-auto pb-8">
+<!-- Summary Strip -->
+<section class="flex border-b border-outline-variant/50 bg-surface-container-lowest divide-x divide-outline-variant/50">
+<div class="flex-1 py-3 flex flex-col items-center justify-center">
+<span class="font-numeric-data text-numeric-data text-primary-container">3</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1 uppercase">Trips</span>
+</div>
+<div class="flex-1 py-3 flex flex-col items-center justify-center">
+<span class="font-numeric-data text-numeric-data text-on-background">5</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1 uppercase">Deals</span>
+</div>
+<div class="flex-1 py-3 flex flex-col items-center justify-center">
+<span class="font-numeric-data text-numeric-data text-error">1</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1 uppercase">Alerts</span>
+</div>
+</section>
+<!-- Segmented Filter -->
+<section class="px-md py-sm bg-surface sticky top-14 z-30 border-b border-outline-variant/30">
+<div class="flex space-x-2 overflow-x-auto no-scrollbar pb-1">
+<!-- Active -->
+<button class="px-4 py-2 bg-[#121212] text-white border border-[#121212] rounded-[4px] font-label-caps text-label-caps whitespace-nowrap active:opacity-80 transition-opacity uppercase">
+                    All
+                </button>
+<!-- Inactive -->
+<button class="px-4 py-2 bg-surface text-on-background border border-outline-variant rounded-[4px] font-label-caps text-label-caps whitespace-nowrap active:bg-surface-container transition-colors uppercase">
+                    Trips
+                </button>
+<button class="px-4 py-2 bg-surface text-on-background border border-outline-variant rounded-[4px] font-label-caps text-label-caps whitespace-nowrap active:bg-surface-container transition-colors uppercase">
+                    Price Alerts
+                </button>
+<button class="px-4 py-2 bg-surface text-on-background border border-outline-variant rounded-[4px] font-label-caps text-label-caps whitespace-nowrap active:bg-surface-container transition-colors uppercase">
+                    System
+                </button>
+</div>
+</section>
+<!-- Notification List -->
+<div class="flex flex-col">
+<!-- Group: Today -->
+<div class="pt-4 pb-2 px-md border-b border-outline-variant/20 bg-surface-container-low/30">
+<h2 class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Today</h2>
+</div>
+<!-- Item: Flight Check-in (Unread) -->
+<div class="flex gap-md p-md border-b border-outline-variant/30 bg-surface active:bg-surface-container transition-colors relative cursor-pointer group">
+<!-- Unread Indicator -->
+<div class="absolute left-1 top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full bg-primary-container"></div>
+<div class="shrink-0 w-10 h-10 rounded-full bg-primary-fixed/30 flex items-center justify-center text-primary-container mt-0.5">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-title-sm text-title-sm text-on-background truncate pr-2">Check-in Open</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant shrink-0">10m ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug line-clamp-2 text-on-background font-medium">Flight JL001 to Tokyo is ready for check-in.</p>
+</div>
+</div>
+<!-- Item: Itinerary Update -->
+<div class="flex gap-md p-md border-b border-outline-variant/30 bg-surface active:bg-surface-container transition-colors cursor-pointer group opacity-90">
+<div class="shrink-0 w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-title-sm text-title-sm text-on-background truncate pr-2">Itinerary Update</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant shrink-0">2h ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug line-clamp-2">Sukiyabashi Jiro reservation confirmed for 7:00 PM.</p>
+</div>
+</div>
+<!-- Group: Yesterday -->
+<div class="pt-4 pb-2 px-md border-b border-outline-variant/20 bg-surface-container-low/30">
+<h2 class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Yesterday</h2>
+</div>
+<!-- Item: Price Drop -->
+<div class="flex gap-md p-md border-b border-outline-variant/30 bg-surface active:bg-surface-container transition-colors cursor-pointer group opacity-90">
+<div class="shrink-0 w-10 h-10 rounded-full bg-tertiary-fixed/40 flex items-center justify-center text-tertiary mt-0.5">
+<span class="material-symbols-outlined text-[20px]">trending_down</span>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-title-sm text-title-sm text-on-background truncate pr-2">Price Drop: Kyoto</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant shrink-0">1d ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug line-clamp-2 mb-2">Flights to Kyoto decreased by $120. Book now.</p>
+<button aria-label="View Kyoto price drop" class="inline-flex items-center justify-center px-4 py-1.5 border border-outline-variant rounded-[4px] text-on-background font-label-caps text-label-caps active:bg-surface-container transition-colors uppercase">
+                        VIEW
+                    </button>
+</div>
+</div>
+<!-- Item: Hotel Reservation -->
+<div class="flex gap-md p-md border-b border-outline-variant/30 bg-surface active:bg-surface-container transition-colors cursor-pointer group opacity-90">
+<div class="shrink-0 w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center text-on-surface-variant mt-0.5">
+<span class="material-symbols-outlined text-[20px]">hotel</span>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-title-sm text-title-sm text-on-background truncate pr-2">Park Hyatt Tokyo</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant shrink-0">1d ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug line-clamp-2">Your stay from April 12-20 is confirmed.</p>
+</div>
+</div>
+<!-- Group: Earlier -->
+<div class="pt-4 pb-2 px-md border-b border-outline-variant/20 bg-surface-container-low/30">
+<h2 class="font-label-caps text-label-caps text-outline uppercase tracking-wider">Earlier</h2>
+</div>
+<!-- Item: Sync Warning -->
+<div class="flex gap-md p-md border-b border-outline-variant/30 bg-surface active:bg-surface-container transition-colors cursor-pointer group opacity-90">
+<div class="shrink-0 w-10 h-10 rounded-full bg-error-container/30 flex items-center justify-center text-error mt-0.5">
+<span class="material-symbols-outlined text-[20px]">sync_problem</span>
+</div>
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex justify-between items-baseline mb-0.5">
+<h3 class="font-title-sm text-title-sm text-on-background truncate pr-2">Sync Warning</h3>
+<span class="font-body-sm text-body-sm text-on-surface-variant shrink-0">3d ago</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-snug line-clamp-2 text-error">Google Calendar disconnected. Tap to reconnect.</p>
+</div>
+</div>
+<!-- End of list padding -->
+<div class="h-12 w-full"></div>
+</div>
+</main>
+<!-- BottomNavBar suppressed due to intent (pushed detail screen - specific navigation flow context rule) -->
+<script>
+        // Simple script to handle segmented control active state toggling
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('section.sticky button');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Reset all
+                    filterButtons.forEach(btn => {
+                        btn.className = 'px-4 py-2 bg-surface text-on-background border border-outline-variant rounded-[4px] font-label-caps text-label-caps whitespace-nowrap active:bg-surface-container transition-colors uppercase';
+                    });
+                    
+                    // Set active
+                    this.className = 'px-4 py-2 bg-[#121212] text-white border border-[#121212] rounded-[4px] font-label-caps text-label-caps whitespace-nowrap active:opacity-80 transition-opacity uppercase';
+                });
+            });
+        });
+    </script>
+</body></html>

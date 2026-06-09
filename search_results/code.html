@@ -1,0 +1,309 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Skybound Travel - Search Results</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-tertiary-fixed": "#2d1600",
+                      "on-primary-fixed": "#001e2d",
+                      "on-surface": "#1c1b1b",
+                      "inverse-on-surface": "#f3f0ef",
+                      "on-background": "#1c1b1b",
+                      "primary": "#00658d",
+                      "tertiary-fixed-dim": "#ffb876",
+                      "primary-container": "#00aeef",
+                      "on-primary-fixed-variant": "#004c6b",
+                      "error-container": "#ffdad6",
+                      "surface-variant": "#e5e2e1",
+                      "secondary-fixed-dim": "#a3cce8",
+                      "on-secondary-fixed-variant": "#204b63",
+                      "surface": "#fcf9f8",
+                      "on-primary-container": "#003e58",
+                      "error": "#ba1a1a",
+                      "on-tertiary-container": "#572f00",
+                      "tertiary": "#8d4f00",
+                      "primary-fixed-dim": "#82cfff",
+                      "on-secondary-container": "#3d657e",
+                      "surface-container-low": "#f6f3f2",
+                      "tertiary-fixed": "#ffdcc0",
+                      "on-tertiary-fixed-variant": "#6b3b00",
+                      "surface-container-high": "#ebe7e7",
+                      "outline-variant": "#bdc8d1",
+                      "on-primary": "#ffffff",
+                      "surface-dim": "#dcd9d9",
+                      "primary-fixed": "#c6e7ff",
+                      "surface-tint": "#00658d",
+                      "on-error": "#ffffff",
+                      "tertiary-container": "#ea8c21",
+                      "on-surface-variant": "#3e4850",
+                      "surface-bright": "#fcf9f8",
+                      "background": "#fcf9f8",
+                      "secondary-fixed": "#c6e7ff",
+                      "secondary-container": "#b9e2ff",
+                      "secondary": "#3a637c",
+                      "inverse-surface": "#313030",
+                      "outline": "#6e7881",
+                      "surface-container-highest": "#e5e2e1",
+                      "on-error-container": "#93000a",
+                      "surface-container": "#f0edec",
+                      "on-secondary-fixed": "#001e2d",
+                      "on-secondary": "#ffffff",
+                      "inverse-primary": "#82cfff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "lg": "16px",
+                      "container-margin": "16px",
+                      "xs": "4px",
+                      "gutter": "12px",
+                      "xl": "24px",
+                      "md": "12px",
+                      "unit": "4px",
+                      "sm": "8px"
+              },
+              "fontFamily": {
+                      "title-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-sm": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "headline-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "numeric-data": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "label-caps": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "display-lg": [
+                              "Plus Jakarta Sans"
+                      ]
+              },
+              "fontSize": {
+                      "title-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "numeric-data": [
+                              "16px",
+                              {
+                                      "lineHeight": "1",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "1",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+      </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md antialiased md:hidden pb-24 pt-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full bg-surface border-b border-outline-variant z-50 transition-colors duration-200">
+<div class="flex items-center justify-between px-lg h-16 w-full z-50">
+<button class="text-on-surface-variant hover:bg-surface-container-low p-sm rounded-full transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary truncate flex-1 text-center px-md">Kyoto, Japan</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-outline-variant shrink-0">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional headshot of a confident young woman with warm lighting and a neutral background. The lighting is soft and even, highlighting her natural features. The overall style is clean, corporate, and trustworthy, perfectly suited for a premium travel app profile picture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBit9pMnKMI7cNK6FA2jiGWqFaE1ec6Nc-5WxkQhV1OCpdgb_WU4ZqLOWgmWOQOyC-9-WyGrTc8FEJp9nesaKhaqBvkmiFBJMITpb1nIep-wTAeuXrMK-6UBsOEe7l3i8WDpL4tYAM4k-lzoHuI1bGt33cuFT6DOx0Q4JqXAcY2BuzlpgaEU87HYoewLktLdP3MVMBOMS6mgSuHKxA-U-I5Zf1Lsa5BrbY63Wc1cq-UMAdxlWPUB1I0sDEJJn-SBSFFeWEfUCCYaYE">
+</div>
+</div>
+<!-- Search & Filter Bar -->
+<div class="px-container-margin pb-sm">
+<div class="relative flex items-center mb-sm">
+<span class="material-symbols-outlined absolute left-sm text-on-surface-variant">search</span>
+<input class="w-full pl-10 pr-md py-sm bg-surface-container-lowest border border-outline-variant rounded-lg font-body-md text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container" placeholder="Search destinations..." type="text" value="Kyoto, Japan">
+</div>
+<div class="flex overflow-x-auto no-scrollbar gap-sm pb-xs">
+<!-- Filter Chips -->
+<button class="flex-none flex items-center gap-xs px-md py-sm bg-secondary-container text-on-primary-container rounded-lg border border-primary-container font-label-caps text-label-caps transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">temple_buddhist</span>
+                    Temple
+                </button>
+<button class="flex-none flex items-center gap-xs px-md py-sm bg-surface-container-low text-on-surface rounded-lg border border-outline-variant font-label-caps text-label-caps hover:bg-surface-container-highest transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">forest</span>
+                    Nature
+                </button>
+<button class="flex-none flex items-center gap-xs px-md py-sm bg-surface-container-low text-on-surface rounded-lg border border-outline-variant font-label-caps text-label-caps hover:bg-surface-container-highest transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">payments</span>
+                    Budget
+                </button>
+<button class="flex-none flex items-center gap-xs px-md py-sm bg-surface-container-low text-on-surface rounded-lg border border-outline-variant font-label-caps text-label-caps hover:bg-surface-container-highest transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">hiking</span>
+                    Adventure
+                </button>
+<button class="flex-none flex items-center gap-xs px-md py-sm bg-surface-container-low text-on-surface rounded-lg border border-outline-variant font-label-caps text-label-caps hover:bg-surface-container-highest transition-colors whitespace-nowrap">
+<span class="material-symbols-outlined text-[16px]">tune</span>
+                    More
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content: Results List -->
+<main class="px-container-margin flex flex-col gap-lg">
+<p class="font-body-sm text-body-sm text-on-surface-variant">Showing 24 results for "Kyoto, Japan"</p>
+<!-- Result Card 1 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="relative w-full aspect-[3/2]">
+<img alt="Fushimi Inari-taisha" class="w-full h-full object-cover" data-alt="A breathtaking view of the iconic thousands of vermilion torii gates at Fushimi Inari Shrine in Kyoto, Japan. The gates create a seemingly endless tunnel leading up the forested mountain. The lighting is dappled sunlight filtering through the dense canopy, creating a serene and spiritual atmosphere. The colors are rich and saturated, emphasizing the striking contrast between the bright orange gates and the deep green foliage." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPXzIi6VRmsD7RPjjetHYhK06qsDNbDNVwjvAJfcQO47Xp6pEqulQ8v2HZXMIRiKrBYsfxF6YwK-SdM4OPoCydTqHnY4Aj-740IqWjbAYz4SiBmY_pu9f2KobrPpOozT3c4sZwh98OYFPinhA7F_ffa7ylJ_gSdLI6DYV9wv8gyliBSiXUKj2h-pWoaiwdZJYMHAILX2T5kzveA5teLZW00BAZmYFt7ml_PkxzqJaWgOJ6vXJUOozNEvNWKtSB73QxACCXiJm9D5A">
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm px-sm py-xs rounded flex items-center gap-xs shadow-sm border border-outline-variant/50">
+<span class="material-symbols-outlined text-primary-container text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-numeric-data text-numeric-data text-on-surface">4.9</span>
+</div>
+</div>
+<div class="p-md flex flex-col gap-sm">
+<div class="flex justify-between items-start gap-sm">
+<h2 class="font-title-sm text-title-sm text-on-surface">Fushimi Inari-taisha</h2>
+<span class="shrink-0 bg-secondary-container text-on-primary-container px-sm py-xs rounded font-label-caps text-label-caps border border-primary-container/30">98% MATCH</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Famous Shinto shrine known for its thousands of vermilion torii gates winding up the mountain trails.</p>
+<div class="flex items-center gap-md mt-xs pt-sm border-t border-surface-container-highest">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-numeric-data text-numeric-data">2.4 km</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">temple_buddhist</span>
+<span class="font-body-sm text-body-sm">Shrine</span>
+</div>
+<div class="ml-auto">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+<!-- Result Card 2 -->
+<article class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden flex flex-col">
+<div class="relative w-full aspect-[3/2]">
+<img alt="Kiyomizu-dera" class="w-full h-full object-cover" data-alt="A spectacular wide shot of the Kiyomizu-dera wooden temple stage elevated on massive pillars, overlooking a lush hillside in Kyoto. The scene is captured during late afternoon, with golden hour light illuminating the historic structure and the surrounding vibrant green trees. The mood is majestic and historically profound, showcasing classic Japanese wooden architecture." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDDjEI3fJcE2ubR5EW6h55PEG3ZSdZUfuZUzR9T9Ykbnf_bUCjbfyMVkl5q8mfIlZNAJFzJb5o-Fh1Utx58iD9smbAJXBRSJ9YSVZpoW3PgttLTWQ4jgyHK0iefwOhnoM-zWtR_d0Upeyk5RN4pgkX_zSne_unG-FMrV_fMMzCGa4OxDpAmPLaa_K-Xl0JyAAnFEHJCfkZz1-8Rox_5jUnaGzolOYQ__3HHEdr822BuiClE9hWM-tieVVkL8b7RDKohmfVP0r0KKt0">
+<div class="absolute top-sm right-sm bg-surface-container-lowest/90 backdrop-blur-sm px-sm py-xs rounded flex items-center gap-xs shadow-sm border border-outline-variant/50">
+<span class="material-symbols-outlined text-primary-container text-[14px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-numeric-data text-numeric-data text-on-surface">4.8</span>
+</div>
+</div>
+<div class="p-md flex flex-col gap-sm">
+<div class="flex justify-between items-start gap-sm">
+<h2 class="font-title-sm text-title-sm text-on-surface">Kiyomizu-dera</h2>
+<span class="shrink-0 bg-surface-container-low text-on-surface px-sm py-xs rounded font-label-caps text-label-caps border border-outline-variant">85% MATCH</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">Historic Buddhist temple offering sweeping city views from its grand wooden stage built without nails.</p>
+<div class="flex items-center gap-md mt-xs pt-sm border-t border-surface-container-highest">
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+<span class="font-numeric-data text-numeric-data">4.1 km</span>
+</div>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]">temple_buddhist</span>
+<span class="font-body-sm text-body-sm">Temple</span>
+</div>
+<div class="ml-auto">
+<button class="w-8 h-8 flex items-center justify-center rounded-lg bg-primary-container text-on-primary hover:bg-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-16 bg-surface border-t border-outline-variant transition-all duration-200 active:scale-95 px-sm"><div class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary bg-secondary-container rounded-full px-md py-xs">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">search</span>
+<span class="font-label-caps text-label-caps mt-1">Search</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">event_note</span>
+<span class="font-label-caps text-label-caps mt-1">Itinerary</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-label-caps mt-1">Map</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-md py-xs hover:text-primary transition-colors">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</div></nav>
+
+
+</body></html>

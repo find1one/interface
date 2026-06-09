@@ -1,0 +1,294 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>Skybound Travel - Tokyo Itinerary</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-dim": "#dcd9d9",
+                    "inverse-surface": "#313030",
+                    "on-surface": "#1c1b1b",
+                    "primary-fixed-dim": "#82cfff",
+                    "tertiary-container": "#ea8c21",
+                    "on-tertiary-container": "#572f00",
+                    "on-surface-variant": "#3e4850",
+                    "on-primary": "#ffffff",
+                    "on-secondary-fixed": "#001e2d",
+                    "on-error-container": "#93000a",
+                    "secondary": "#3a637c",
+                    "secondary-fixed-dim": "#a3cce8",
+                    "inverse-on-surface": "#f3f0ef",
+                    "surface-container-highest": "#e5e2e1",
+                    "inverse-primary": "#82cfff",
+                    "surface-variant": "#e5e2e1",
+                    "on-tertiary-fixed": "#2d1600",
+                    "primary-container": "#00aeef",
+                    "secondary-container": "#b9e2ff",
+                    "surface-container-high": "#ebe7e7",
+                    "background": "#fcf9f8",
+                    "outline": "#6e7881",
+                    "on-primary-fixed": "#001e2d",
+                    "on-secondary": "#ffffff",
+                    "primary": "#00658d",
+                    "on-background": "#1c1b1b",
+                    "error-container": "#ffdad6",
+                    "outline-variant": "#bdc8d1",
+                    "surface-bright": "#fcf9f8",
+                    "primary-fixed": "#c6e7ff",
+                    "surface-container": "#f0edec",
+                    "on-tertiary-fixed-variant": "#6b3b00",
+                    "tertiary": "#8d4f00",
+                    "on-secondary-container": "#3d657e",
+                    "surface-container-low": "#f6f3f2",
+                    "surface": "#fcf9f8",
+                    "on-tertiary": "#ffffff",
+                    "surface-tint": "#00658d",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed": "#ffdcc0",
+                    "tertiary-fixed-dim": "#ffb876",
+                    "error": "#ba1a1a",
+                    "secondary-fixed": "#c6e7ff",
+                    "on-primary-fixed-variant": "#004c6b",
+                    "on-primary-container": "#003e58",
+                    "on-secondary-fixed-variant": "#204b63",
+                    "on-error": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "container-margin": "16px",
+                    "md": "12px",
+                    "gutter": "12px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "xl": "24px",
+                    "sm": "8px",
+                    "lg": "16px"
+            },
+            "fontFamily": {
+                    "title-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "numeric-data": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "numeric-data": ["16px", {"lineHeight": "1", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            font-size: 20px;
+        }
+        .itinerary-line::before {
+            content: '';
+            position: absolute;
+            left: 21px;
+            top: 40px;
+            bottom: -10px;
+            width: 1px;
+            background-color: #bdc8d1;
+        }
+        .last-item::before {
+            display: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md antialiased">
+<!-- TopAppBar -->
+<header class="bg-surface dark:bg-on-surface border-b border-outline-variant dark:border-outline docked full-width top-0 z-40">
+<div class="flex justify-between items-center w-full px-container-margin h-16">
+<div class="flex items-center gap-3">
+<img alt="User profile" class="w-10 h-10 rounded-full object-cover border border-outline-variant" data-alt="A clean, professional headshot of a person with short hair, wearing a neutral-colored business casual outfit. The background is a soft, out-of-focus modern office setting with cool, daylight illumination. The visual style is high-end, minimalist, and perfectly sharp, reflecting a professional user persona." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtdHuN4PECyuiCzHCHVx4v9EwVYF_c8gpkTwZgiW5gqHwmooR_z8jZ7oE2EA5kwmOlTK7gZMc573W3QbO4d_Yx-V2fncjeuHb6Xqj4si6vpIkLNsZioLP_xGhyq9nzx0i_aEEke6fSE6dzn1zJdrQGeTpsFdEQCZQQAR4u911r8_CytRF8IM8EvdvT-SEopAVvXm5U22PkqRvwFtVNkfltadWRSQEuLY1gQeNvhrOqqom5e3YF3dcDv3vTOIfVoXqGM-IgHcWFZM4">
+<span class="font-display-lg text-display-lg font-bold text-primary dark:text-primary-container">Skybound</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full transition-colors duration-200 ease-in-out hover:bg-surface-container-high dark:hover:bg-inverse-surface">
+<span class="material-symbols-outlined text-on-surface-variant dark:text-surface-variant">notifications</span>
+</button>
+</div>
+</header>
+<main class="max-w-2xl mx-auto pb-32">
+<!-- Hero Trip Header -->
+<section class="p-container-margin bg-surface">
+<div class="flex justify-between items-start mb-lg">
+<div class="space-y-1">
+<h1 class="font-headline-md text-headline-md text-on-surface">Tokyo Spring Trip</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant">MAR 24 — APR 02, 2024</p>
+</div>
+<!-- Weather Widget -->
+<div class="bg-surface-container flex items-center gap-2 px-md py-sm border border-outline-variant rounded-lg">
+<span class="material-symbols-outlined text-primary" data-weight="fill" style="font-variation-settings: 'FILL' 1;">partly_cloudy_day</span>
+<div class="flex flex-col">
+<span class="font-numeric-data text-numeric-data text-on-surface">18°C</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">TOKYO</span>
+</div>
+</div>
+</div>
+<!-- Trip Stats Bar -->
+<div class="grid grid-cols-3 border border-outline-variant rounded-lg overflow-hidden divide-x divide-outline-variant">
+<div class="p-md text-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">STATUS</span>
+<span class="font-numeric-data text-numeric-data text-primary">ONGOING</span>
+</div>
+<div class="p-md text-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">STOPS</span>
+<span class="font-numeric-data text-numeric-data text-on-surface">12 EVENTS</span>
+</div>
+<div class="p-md text-center">
+<span class="font-label-caps text-label-caps text-on-surface-variant block mb-1">DAY</span>
+<span class="font-numeric-data text-numeric-data text-on-surface">01 / 10</span>
+</div>
+</div>
+</section>
+<!-- Itinerary Timeline -->
+<section class="px-container-margin py-lg space-y-gutter relative">
+<div class="font-label-caps text-label-caps text-on-surface-variant flex items-center gap-2 mb-md">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                SUNDAY, MARCH 24
+            </div>
+<!-- Event 1: Flight -->
+<div class="flex gap-4 relative itinerary-line">
+<div class="flex-shrink-0 z-10">
+<div class="w-11 h-11 bg-primary text-white flex items-center justify-center rounded-lg shadow-sm">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">flight_takeoff</span>
+</div>
+</div>
+<div class="flex-grow bg-white border border-outline-variant rounded-lg p-md">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-numeric-data text-numeric-data text-on-surface">10:00 AM</span>
+<span class="px-sm py-[2px] bg-secondary-container text-on-secondary-container font-label-caps text-[10px] rounded border border-outline-variant">CONFIRMED</span>
+</div>
+<div class="mb-md">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-xs">Flight JL 001</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">SFO Terminal G → HND Terminal 3</p>
+</div>
+<div class="flex gap-3">
+<button class="font-label-caps text-label-caps text-primary uppercase border border-primary/20 px-2 py-1 rounded hover:bg-primary-container transition-colors">Details</button>
+<button class="font-label-caps text-label-caps text-on-surface-variant uppercase border border-outline-variant px-2 py-1 rounded hover:bg-surface-container transition-colors">View Map</button>
+</div>
+</div>
+</div>
+<!-- Event 2: Check-in -->
+<div class="flex gap-4 relative itinerary-line">
+<div class="flex-shrink-0 z-10">
+<div class="w-11 h-11 bg-surface-container-highest text-on-surface-variant flex items-center justify-center rounded-lg border border-outline-variant">
+<span class="material-symbols-outlined">hotel</span>
+</div>
+</div>
+<div class="flex-grow bg-white border border-outline-variant rounded-lg p-md">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-numeric-data text-numeric-data text-on-surface">02:00 PM</span>
+<span class="px-sm py-[2px] bg-surface-container-high text-on-surface-variant font-label-caps text-[10px] rounded border border-outline-variant">PENDING</span>
+</div>
+<div class="mb-md">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-xs">Check-in: Park Hyatt</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">3-7-1-2 Nishi-Shinjuku, Shinjuku City</p>
+</div>
+<div class="flex gap-3">
+<button class="font-label-caps text-label-caps text-primary uppercase border border-primary/20 px-2 py-1 rounded hover:bg-primary-container transition-colors">Contact</button>
+<button class="font-label-caps text-label-caps text-on-surface-variant uppercase border border-outline-variant px-2 py-1 rounded hover:bg-surface-container transition-colors">Get Directions</button>
+</div>
+</div>
+</div>
+<!-- Event 3: Dinner -->
+<div class="flex gap-4 relative itinerary-line last-item">
+<div class="flex-shrink-0 z-10">
+<div class="w-11 h-11 bg-tertiary-container text-on-tertiary-container flex items-center justify-center rounded-lg">
+<span class="material-symbols-outlined">restaurant</span>
+</div>
+</div>
+<div class="flex-grow bg-white border border-outline-variant rounded-lg p-md">
+<div class="flex justify-between items-start mb-sm">
+<span class="font-numeric-data text-numeric-data text-on-surface">07:00 PM</span>
+<span class="px-sm py-[2px] bg-secondary-container text-on-secondary-container font-label-caps text-[10px] rounded border border-outline-variant">CONFIRMED</span>
+</div>
+<div class="mb-md">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-xs">Sukiyabashi Jiro</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ginza 4-chome, Chuo City (B1F)</p>
+</div>
+<div class="flex gap-3">
+<button class="font-label-caps text-label-caps text-primary uppercase border border-primary/20 px-2 py-1 rounded hover:bg-primary-container transition-colors">Reservation</button>
+<button class="font-label-caps text-label-caps text-on-surface-variant uppercase border border-outline-variant px-2 py-1 rounded hover:bg-surface-container transition-colors">Get Directions</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Insights -->
+<section class="px-container-margin py-lg grid grid-cols-2 gap-md">
+<div class="col-span-2 font-label-caps text-label-caps text-on-surface-variant mb-xs">TRIP ESSENTIALS</div>
+<div class="bg-white border border-outline-variant rounded-lg p-md col-span-1">
+<span class="material-symbols-outlined text-primary mb-sm">currency_exchange</span>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-xs">CURRENCY</h4>
+<p class="font-numeric-data text-numeric-data text-on-surface">1 USD = 149 JPY</p>
+</div>
+<div class="bg-white border border-outline-variant rounded-lg p-md col-span-1">
+<span class="material-symbols-outlined text-primary mb-sm">translate</span>
+<h4 class="font-label-caps text-label-caps text-on-surface-variant mb-xs">PHRASE</h4>
+<p class="font-body-sm text-body-sm text-on-surface">Arigatou Gozaimasu</p>
+</div>
+<div class="bg-white border border-outline-variant rounded-lg overflow-hidden col-span-2 h-32 relative">
+<div class="absolute inset-0 bg-cover bg-center" data-alt="A wide, high-resolution aerial view of the Tokyo skyline at dusk, capturing the intricate grid of the city. Shinjuku's skyscrapers are silhouetted against a deep indigo and magenta sunset sky. The lighting is crisp and moody, with city lights beginning to sparkle like gems. The aesthetic is clean and futuristic, embodying a high-end travel experience." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGI8u29fuoPgTDosPZlIyO8jQepOtmdEFfiTJ1o8Y2rYJf8t25PGpK-NVNz8Zv8LUi4MRQG7hro-a3O-xi1x137NbtGFAKfQ9lGEfm2QSgxG-7fCqrH5wNdyPXH_rZG65eaod3vuWqVpRZLCULPabuhgkgDe7v8pUlSlUIhcDeXCL5sbBdX7zTrfSTPEkKjqxGj5CrQKMQepj78BFovwC6va5S6u9fAUDbwmtsS76kzE_k11UlEQN_yVX3rxvXYhzHzuMpGyYRTJY')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/80 to-transparent"></div>
+<div class="absolute bottom-md left-md">
+<h4 class="font-label-caps text-label-caps text-white mb-xs">CURRENT LOCATION</h4>
+<p class="font-body-sm text-body-sm text-white/90">Shinjuku District, Tokyo</p>
+</div>
+<button class="absolute bottom-md right-md bg-primary-container text-on-primary-container px-md py-sm rounded-lg font-label-caps text-label-caps flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">map</span>
+                    EXPAND MAP
+                </button>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center bg-surface dark:bg-on-surface py-2 pb-safe border-t border-outline-variant dark:border-outline z-50"><a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-caps text-label-caps mt-1">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="font-label-caps text-label-caps mt-1">Search</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed-dim font-bold transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">calendar_month</span>
+<span class="font-label-caps text-label-caps mt-1">Itinerary</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1" href="#">
+<span class="material-symbols-outlined">map</span>
+<span class="font-label-caps text-label-caps mt-1">Map</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant transition-all duration-200 active:scale-95 hover:bg-surface-container-low dark:hover:bg-inverse-surface px-4 py-1" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-caps text-label-caps mt-1">Profile</span>
+</a></nav>
+
+
+</body></html>

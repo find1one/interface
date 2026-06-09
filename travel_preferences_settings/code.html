@@ -1,0 +1,340 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=390, initial-scale=1.0" name="viewport">
+<title>Travel Preferences - Skybound Travel</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "surface-dim": "#dcd9d9",
+                    "surface-container-highest": "#e5e2e1",
+                    "secondary-fixed": "#c6e7ff",
+                    "inverse-primary": "#82cfff",
+                    "tertiary-container": "#ea8c21",
+                    "on-surface": "#1c1b1b",
+                    "surface-container": "#f0edec",
+                    "secondary": "#3a637c",
+                    "on-secondary-fixed-variant": "#204b63",
+                    "inverse-surface": "#313030",
+                    "primary-fixed": "#c6e7ff",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#003e58",
+                    "surface": "#fcf9f8",
+                    "on-tertiary-fixed": "#2d1600",
+                    "surface-container-low": "#f6f3f2",
+                    "on-secondary": "#ffffff",
+                    "primary-container": "#00aeef",
+                    "on-surface-variant": "#3e4850",
+                    "outline-variant": "#bdc8d1",
+                    "on-error-container": "#93000a",
+                    "tertiary": "#8d4f00",
+                    "on-primary-fixed-variant": "#004c6b",
+                    "on-secondary-fixed": "#001e2d",
+                    "surface-bright": "#fcf9f8",
+                    "outline": "#6e7881",
+                    "on-secondary-container": "#3d657e",
+                    "error": "#ba1a1a",
+                    "error-container": "#ffdad6",
+                    "background": "#fcf9f8",
+                    "on-tertiary-container": "#572f00",
+                    "on-primary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb876",
+                    "primary-fixed-dim": "#82cfff",
+                    "on-primary-fixed": "#001e2d",
+                    "secondary-fixed-dim": "#a3cce8",
+                    "surface-container-high": "#ebe7e7",
+                    "inverse-on-surface": "#f3f0ef",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#00658d",
+                    "tertiary-fixed": "#ffdcc0",
+                    "surface-variant": "#e5e2e1",
+                    "on-background": "#1c1b1b",
+                    "secondary-container": "#b9e2ff",
+                    "on-tertiary-fixed-variant": "#6b3b00",
+                    "primary": "#00658d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "sm": "8px",
+                    "md": "12px",
+                    "lg": "16px",
+                    "container-margin": "16px",
+                    "gutter": "12px",
+                    "xs": "4px",
+                    "xl": "24px"
+            },
+            "fontFamily": {
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "title-sm": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "numeric-data": ["Plus Jakarta Sans"],
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-sm": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}],
+                    "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "numeric-data": ["16px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.filled {
+            font-variation-settings: 'FILL' 1;
+        }
+        /* Custom Checkbox Styles to ensure utility-first precision */
+        .utility-checkbox:checked + div {
+            background-color: #00aeef;
+            border-color: #00aeef;
+        }
+        .utility-checkbox:checked + div > span {
+            opacity: 1;
+        }
+        /* Segmented Control Active State */
+        .segmented-active {
+            background-color: #1c1b1b;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased w-[390px] mx-auto relative min-h-[844px] pb-24 overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 border-b border-outline-variant flat transition-colors duration-200 flex items-center justify-between px-lg h-14 bg-surface">
+<button aria-label="Go back" class="w-10 h-10 flex items-center justify-start text-on-surface hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-on-surface flex-1 text-center font-bold tracking-tight pr-10">
+            Travel Preferences
+        </h1>
+</header>
+<main class="px-container-margin pt-lg flex flex-col gap-xl">
+<!-- 1. Budget Preference -->
+<section>
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md">Budget Preference</h2>
+<div class="flex flex-col gap-sm">
+<!-- Economy -->
+<label class="block cursor-pointer">
+<input class="peer sr-only" name="budget" type="radio" value="economy">
+<div class="border border-outline-variant rounded-lg p-md bg-surface-container-lowest flex items-center justify-between peer-checked:border-[2px] peer-checked:border-primary-container peer-checked:bg-primary-container/5 transition-all">
+<div>
+<div class="font-title-sm text-[15px] leading-tight text-on-surface font-semibold mb-xs">Economy</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Budget-conscious, essential comfort</div>
+</div>
+<div class="font-numeric-data text-numeric-data text-on-surface-variant peer-checked:text-primary-container font-medium">$</div>
+</div>
+</label>
+<!-- Standard (Active) -->
+<label class="block cursor-pointer">
+<input checked="" class="peer sr-only" name="budget" type="radio" value="standard">
+<div class="border border-outline-variant rounded-lg p-md bg-surface-container-lowest flex items-center justify-between peer-checked:border-[2px] peer-checked:border-primary-container peer-checked:bg-primary-container/5 transition-all">
+<div>
+<div class="font-title-sm text-[15px] leading-tight text-on-surface font-semibold mb-xs">Standard</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Balanced cost and convenience</div>
+</div>
+<div class="font-numeric-data text-numeric-data text-primary-container font-medium">$$</div>
+</div>
+</label>
+<!-- Premium -->
+<label class="block cursor-pointer">
+<input class="peer sr-only" name="budget" type="radio" value="premium">
+<div class="border border-outline-variant rounded-lg p-md bg-surface-container-lowest flex items-center justify-between peer-checked:border-[2px] peer-checked:border-primary-container peer-checked:bg-primary-container/5 transition-all">
+<div>
+<div class="font-title-sm text-[15px] leading-tight text-on-surface font-semibold mb-xs">Premium</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Luxury, high-end experiences</div>
+</div>
+<div class="font-numeric-data text-numeric-data text-on-surface-variant peer-checked:text-primary-container font-medium">$$$</div>
+</div>
+</label>
+</div>
+</section>
+<!-- 4. Travel Pace (Segmented Control - Moved up for logical flow) -->
+<section>
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md">Travel Pace</h2>
+<div class="flex w-full border border-outline-variant rounded-lg bg-surface-container-lowest p-[2px]">
+<button class="flex-1 py-sm text-center font-label-caps text-label-caps rounded-[3px] text-on-surface-variant hover:bg-surface-container-low uppercase tracking-widest transition-colors">Relaxed</button>
+<button class="flex-1 py-sm text-center font-label-caps text-label-caps rounded-[3px] segmented-active shadow-[0_1px_2px_rgba(0,0,0,0.05)] uppercase tracking-widest transition-colors">Balanced</button>
+<button class="flex-1 py-sm text-center font-label-caps text-label-caps rounded-[3px] text-on-surface-variant hover:bg-surface-container-low uppercase tracking-widest transition-colors">Packed</button>
+</div>
+</section>
+<!-- 2. Dietary Restrictions -->
+<section>
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md">Dietary Restrictions</h2>
+<div class="border border-outline-variant rounded-lg bg-surface-container-lowest divide-y divide-surface-variant overflow-hidden">
+<label class="flex items-center justify-between p-md cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="font-body-md text-body-md text-on-surface">No restrictions</span>
+<div class="relative flex items-center">
+<input checked="" class="utility-checkbox sr-only" type="checkbox">
+<div class="w-5 h-5 border border-outline-variant rounded-[3px] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+</div>
+</div>
+</label>
+<label class="flex items-center justify-between p-md cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="font-body-md text-body-md text-on-surface">Vegetarian</span>
+<div class="relative flex items-center">
+<input class="utility-checkbox sr-only" type="checkbox">
+<div class="w-5 h-5 border border-outline-variant rounded-[3px] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+</div>
+</div>
+</label>
+<label class="flex items-center justify-between p-md cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="font-body-md text-body-md text-on-surface">Vegan</span>
+<div class="relative flex items-center">
+<input class="utility-checkbox sr-only" type="checkbox">
+<div class="w-5 h-5 border border-outline-variant rounded-[3px] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+</div>
+</div>
+</label>
+<label class="flex items-center justify-between p-md cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="font-body-md text-body-md text-on-surface">Gluten-free</span>
+<div class="relative flex items-center">
+<input class="utility-checkbox sr-only" type="checkbox">
+<div class="w-5 h-5 border border-outline-variant rounded-[3px] flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[16px] text-on-primary opacity-0 transition-opacity">check</span>
+</div>
+</div>
+</label>
+</div>
+</section>
+<!-- 3. Accessibility Needs -->
+<section>
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md">Accessibility</h2>
+<div class="border border-outline-variant rounded-lg bg-surface-container-lowest divide-y divide-surface-variant overflow-hidden">
+<label class="flex items-center justify-between p-md cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="font-body-md text-body-md text-on-surface">Step-free access</span>
+<input class="sr-only peer" type="checkbox">
+<div class="w-[36px] h-[20px] bg-surface-variant rounded-full peer-checked:bg-primary-container relative transition-colors duration-200">
+<div class="w-[16px] h-[16px] bg-surface-container-lowest rounded-full absolute top-[2px] left-[2px] peer-checked:translate-x-[16px] transition-transform duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.1)]"></div>
+</div>
+</label>
+<label class="flex items-center justify-between p-md cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="font-body-md text-body-md text-on-surface">Low walking routes</span>
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-[36px] h-[20px] bg-primary-container rounded-full relative transition-colors duration-200">
+<div class="w-[16px] h-[16px] bg-surface-container-lowest rounded-full absolute top-[2px] left-[2px] translate-x-[16px] transition-transform duration-200 shadow-[0_1px_2px_rgba(0,0,0,0.1)]"></div>
+</div>
+</label>
+</div>
+</section>
+<!-- 5. Preferred Transport (Multi-select Grid) -->
+<section>
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md">Preferred Transport</h2>
+<div class="grid grid-cols-2 gap-sm">
+<label class="block cursor-pointer">
+<input checked="" class="peer sr-only" type="checkbox">
+<div class="border border-outline-variant rounded-lg p-sm bg-surface-container-lowest flex items-center gap-sm peer-checked:border-primary-container peer-checked:bg-primary-container/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant peer-checked:text-primary-container text-[20px]">train</span>
+<span class="font-body-md text-body-md text-on-surface">Transit</span>
+</div>
+</label>
+<label class="block cursor-pointer">
+<input checked="" class="peer sr-only" type="checkbox">
+<div class="border border-outline-variant rounded-lg p-sm bg-surface-container-lowest flex items-center gap-sm peer-checked:border-primary-container peer-checked:bg-primary-container/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant peer-checked:text-primary-container text-[20px]">directions_walk</span>
+<span class="font-body-md text-body-md text-on-surface">Walking</span>
+</div>
+</label>
+<label class="block cursor-pointer">
+<input class="peer sr-only" type="checkbox">
+<div class="border border-outline-variant rounded-lg p-sm bg-surface-container-lowest flex items-center gap-sm peer-checked:border-primary-container peer-checked:bg-primary-container/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant peer-checked:text-primary-container text-[20px]">local_taxi</span>
+<span class="font-body-md text-body-md text-on-surface">Taxi/Ride</span>
+</div>
+</label>
+<label class="block cursor-pointer">
+<input class="peer sr-only" type="checkbox">
+<div class="border border-outline-variant rounded-lg p-sm bg-surface-container-lowest flex items-center gap-sm peer-checked:border-primary-container peer-checked:bg-primary-container/5 transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant peer-checked:text-primary-container text-[20px]">directions_car</span>
+<span class="font-body-md text-body-md text-on-surface">Rental Car</span>
+</div>
+</label>
+</div>
+</section>
+<!-- 6. Localization -->
+<section class="pb-md">
+<h2 class="font-title-sm text-title-sm text-on-surface mb-md">Localization</h2>
+<div class="border border-outline-variant rounded-lg bg-surface-container-lowest divide-y divide-surface-variant overflow-hidden">
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors text-left">
+<span class="font-body-md text-body-md text-on-surface">Language</span>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="font-body-sm text-body-sm">English (US)</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</button>
+<button class="w-full flex items-center justify-between p-md hover:bg-surface-container-low transition-colors text-left">
+<span class="font-body-md text-body-md text-on-surface">Currency</span>
+<div class="flex items-center gap-xs text-on-surface-variant">
+<span class="font-body-sm text-body-sm">USD ($)</span>
+<span class="material-symbols-outlined text-[20px]">chevron_right</span>
+</div>
+</button>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Button -->
+<nav class="fixed bottom-0 left-1/2 -translate-x-1/2 w-[390px] bg-surface-container border-t border-outline-variant px-sm py-xs flex justify-between items-center z-50">
+    <button class="flex flex-col items-center justify-center flex-1 gap-1 py-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">home</span>
+        <span class="font-label-caps text-[10px] uppercase tracking-tighter">Home</span>
+    </button>
+    <button class="flex flex-col items-center justify-center flex-1 gap-1 py-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">search</span>
+        <span class="font-label-caps text-[10px] uppercase tracking-tighter">Search</span>
+    </button>
+    <button class="flex flex-col items-center justify-center flex-1 gap-1 py-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">calendar_today</span>
+        <span class="font-label-caps text-[10px] uppercase tracking-tighter">Itinerary</span>
+    </button>
+    <button class="flex flex-col items-center justify-center flex-1 gap-1 py-1 text-on-surface-variant hover:text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px]">map</span>
+        <span class="font-label-caps text-[10px] uppercase tracking-tighter">Map</span>
+    </button>
+    <button class="flex flex-col items-center justify-center flex-1 gap-1 py-1 text-primary transition-colors">
+        <span class="material-symbols-outlined text-[24px] filled">person</span>
+        <span class="font-label-caps text-[10px] uppercase tracking-tighter font-bold">Profile</span>
+    </button>
+</nav>
+<script>
+        // Simple script to handle segmented control visual swap
+        document.addEventListener('DOMContentLoaded', () => {
+            const segmentedButtons = document.querySelectorAll('.segmented-active').parentElement.querySelectorAll('button');
+            segmentedButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    segmentedButtons.forEach(b => {
+                        b.classList.remove('segmented-active', 'shadow-[0_1px_2px_rgba(0,0,0,0.05)]');
+                        b.classList.add('text-on-surface-variant', 'hover:bg-surface-container-low');
+                    });
+                    e.target.classList.add('segmented-active', 'shadow-[0_1px_2px_rgba(0,0,0,0.05)]');
+                    e.target.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-low');
+                });
+            });
+        });
+    </script>
+
+
+</body></html>

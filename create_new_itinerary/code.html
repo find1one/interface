@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Create Itinerary - Skybound Travel</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "error-container": "#ffdad6",
+                    "surface-variant": "#e5e2e1",
+                    "secondary": "#3a637c",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#c6e7ff",
+                    "surface-container-lowest": "#ffffff",
+                    "primary": "#00658d",
+                    "on-secondary-container": "#3d657e",
+                    "on-primary-fixed": "#001e2d",
+                    "surface-container-high": "#ebe7e7",
+                    "on-primary": "#ffffff",
+                    "outline": "#6e7881",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-container": "#003e58",
+                    "background": "#fcf9f8",
+                    "on-surface-variant": "#3e4850",
+                    "primary-fixed-dim": "#82cfff",
+                    "on-tertiary-fixed": "#2d1600",
+                    "surface-bright": "#fcf9f8",
+                    "on-background": "#1c1b1b",
+                    "inverse-on-surface": "#f3f0ef",
+                    "tertiary-container": "#ea8c21",
+                    "tertiary": "#8d4f00",
+                    "surface-container": "#f0edec",
+                    "inverse-primary": "#82cfff",
+                    "tertiary-fixed-dim": "#ffb876",
+                    "secondary-fixed": "#c6e7ff",
+                    "on-primary-fixed-variant": "#004c6b",
+                    "error": "#ba1a1a",
+                    "secondary-fixed-dim": "#a3cce8",
+                    "surface": "#fcf9f8",
+                    "on-secondary-fixed-variant": "#204b63",
+                    "primary-container": "#00aeef",
+                    "on-surface": "#1c1b1b",
+                    "on-tertiary-fixed-variant": "#6b3b00",
+                    "surface-container-low": "#f6f3f2",
+                    "tertiary-fixed": "#ffdcc0",
+                    "surface-dim": "#dcd9d9",
+                    "inverse-surface": "#313030",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#bdc8d1",
+                    "surface-container-highest": "#e5e2e1",
+                    "on-secondary-fixed": "#001e2d",
+                    "on-tertiary-container": "#572f00",
+                    "secondary-container": "#b9e2ff",
+                    "on-secondary": "#ffffff",
+                    "surface-tint": "#00658d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "xs": "4px",
+                    "sm": "8px",
+                    "xl": "24px",
+                    "md": "12px",
+                    "gutter": "12px",
+                    "lg": "16px",
+                    "container-margin": "16px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "label-caps": ["Plus Jakarta Sans"],
+                    "numeric-data": ["Plus Jakarta Sans"],
+                    "title-sm": ["Plus Jakarta Sans"],
+                    "body-sm": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "display-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-caps": ["11px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "numeric-data": ["16px", {"lineHeight": "1", "fontWeight": "500"}],
+                    "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-sm": ["13px", {"lineHeight": "1.4", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        body {
+            -webkit-tap-highlight-color: transparent;
+            background-color: theme('colors.background');
+        }
+        /* Custom scrollbar for horizontal chip list */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="w-full min-h-screen text-on-background max-w-[390px] mx-auto relative pb-[140px] md:pb-0">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex items-center justify-between px-md h-14 w-full bg-surface max-w-[390px]" style="border-bottom: 1px solid theme('colors.outline-variant');">
+<button aria-label="Back" class="w-11 h-11 flex items-center justify-center text-primary transition-colors duration-200 active:bg-surface-container rounded-full">
+<span class="material-symbols-outlined" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-on-surface truncate px-sm">Create Itinerary</h1>
+<button aria-label="More options" class="w-11 h-11 flex items-center justify-center text-on-surface-variant transition-colors duration-200 active:bg-surface-container rounded-full">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[72px] px-container-margin pb-xl">
+<!-- Form Fields Section -->
+<form class="flex flex-col gap-lg">
+<!-- Trip Title Field (Error State) -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface" for="trip-title">TRIP TITLE <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-11 px-md font-body-md text-body-md bg-surface border border-error rounded-DEFAULT focus:outline-none focus:ring-2 focus:ring-error text-on-surface placeholder:text-outline-variant" id="trip-title" name="trip-title" placeholder="e.g. Kyoto Spring Break" type="text"/>
+<span class="material-symbols-outlined text-error absolute right-md top-1/2 -translate-y-1/2 text-[20px]" data-icon="error">error</span>
+</div>
+<p class="font-body-sm text-body-sm text-error mt-1">Trip title is required.</p>
+</div>
+<!-- Destination Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface" for="destination">DESTINATION</label>
+<input class="w-full h-11 px-md font-body-md text-body-md bg-surface border border-outline-variant rounded-DEFAULT focus:outline-none focus:border-primary-container focus:border-2 text-on-surface placeholder:text-outline-variant" id="destination" name="destination" placeholder="e.g. Kyoto, Japan" type="text"/>
+</div>
+<!-- Date Selection Row (Error State) -->
+<div class="flex flex-col gap-xs">
+<div class="flex gap-md w-full">
+<div class="flex-1 flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface" for="start-date">START DATE <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-11 px-sm font-numeric-data text-numeric-data bg-surface border border-error rounded-DEFAULT focus:outline-none focus:ring-2 focus:ring-error text-on-surface" id="start-date" name="start-date" type="date"/>
+</div>
+</div>
+<div class="flex-1 flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface" for="end-date">END DATE <span class="text-error">*</span></label>
+<div class="relative">
+<input class="w-full h-11 px-sm font-numeric-data text-numeric-data bg-surface border border-error rounded-DEFAULT focus:outline-none focus:ring-2 focus:ring-error text-on-surface" id="end-date" name="end-date" type="date"/>
+</div>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-error mt-1">Please select travel dates.</p>
+</div>
+<!-- Divider -->
+<hr class="border-t border-outline-variant my-xs"/>
+<!-- Attractions Field & Chips -->
+<div class="flex flex-col gap-md">
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface" for="attractions">ATTRACTIONS</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline-variant text-[20px]" data-icon="search">search</span>
+<input class="w-full h-11 pl-[40px] pr-md font-body-md text-body-md bg-surface border border-outline-variant rounded-DEFAULT focus:outline-none focus:border-primary-container focus:border-2 text-on-surface placeholder:text-outline-variant" id="attractions" name="attractions" placeholder="Search places..." type="text"/>
+</div>
+</div>
+<!-- Selected Chips -->
+<div class="flex flex-wrap gap-sm">
+<div class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container-high rounded-full border border-outline-variant">
+<span class="font-body-sm text-body-sm text-on-surface whitespace-nowrap">Fushimi Inari-taisha</span>
+<button class="flex items-center justify-center text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="close">close</span>
+</button>
+</div>
+<div class="inline-flex items-center gap-xs px-sm py-xs bg-surface-container-high rounded-full border border-outline-variant">
+<span class="font-body-sm text-body-sm text-on-surface whitespace-nowrap">Kiyomizu-dera</span>
+<button class="flex items-center justify-center text-on-surface-variant hover:text-on-surface" type="button">
+<span class="material-symbols-outlined text-[16px]" data-icon="close">close</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Notes Text Area -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-end">
+<label class="font-label-caps text-label-caps text-on-surface" for="notes">OPTIONAL NOTES</label>
+<span class="font-body-sm text-body-sm text-outline-variant">0/200</span>
+</div>
+<textarea class="w-full p-md font-body-md text-body-md bg-surface border border-outline-variant rounded-DEFAULT focus:outline-none focus:border-primary-container focus:border-2 text-on-surface placeholder:text-outline-variant resize-none" id="notes" name="notes" placeholder="Add any specific requirements or ideas..." rows="4"></textarea>
+</div>
+</form>
+</main>
+<!-- Sticky Actions -->
+<div class="fixed bottom-[72px] left-0 w-full max-w-[390px] px-container-margin py-md bg-surface z-40 flex flex-col gap-sm" style="border-top: 1px solid theme('colors.outline-variant'); box-shadow: 0px -2px 4px rgba(0, 0, 0, 0.02);">
+<button class="w-full h-11 bg-[#00aeef] text-on-primary font-title-sm text-title-sm rounded-DEFAULT flex items-center justify-center transition-colors duration-200 active:bg-[#009bd4]" type="button">
+            Save Itinerary
+        </button>
+<button class="w-full h-11 bg-transparent text-[#09090b] border border-[#e4e4e7] font-title-sm text-title-sm rounded-DEFAULT flex items-center justify-center transition-colors duration-200 active:bg-surface-container" type="button">
+            Cancel
+        </button>
+</div>
+<!-- Feedback Snackbar (Hidden by default, shown for demo) -->
+<div class="fixed bottom-[160px] left-1/2 -translate-x-1/2 bg-inverse-surface text-inverse-on-surface px-lg py-sm rounded-DEFAULT font-body-sm text-body-sm flex items-center gap-sm shadow-md z-50 pointer-events-none opacity-0 transition-opacity duration-300" id="success-toast">
+<span class="material-symbols-outlined text-[20px]" data-icon="check_circle">check_circle</span>
+        Saved successfully.
+    </div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full max-w-[390px] flex justify-around items-center bg-surface py-sm px-gutter z-50 h-[72px]" style="border-top: 1px solid theme('colors.outline-variant');">
+<a aria-label="Home" class="flex flex-col items-center justify-center text-on-surface-variant px-lg py-xs hover:bg-surface-container scale-95 transition-transform duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps">Home</span>
+</a>
+<a aria-label="Search" class="flex flex-col items-center justify-center text-on-surface-variant px-lg py-xs hover:bg-surface-container scale-95 transition-transform duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="search">search</span>
+<span class="font-label-caps text-label-caps">Search</span>
+</a>
+<!-- Active Tab -->
+<a aria-label="Itinerary" class="flex flex-col items-center justify-center text-primary bg-primary-container/10 px-lg py-xs scale-95 transition-transform duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined mb-1 text-primary-container" data-icon="event_note" style="font-variation-settings: 'FILL' 1;">event_note</span>
+<span class="font-label-caps text-label-caps text-primary-container">Itinerary</span>
+</a>
+<a aria-label="Map" class="flex flex-col items-center justify-center text-on-surface-variant px-lg py-xs hover:bg-surface-container scale-95 transition-transform duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="map">map</span>
+<span class="font-label-caps text-label-caps">Map</span>
+</a>
+<a aria-label="Profile" class="flex flex-col items-center justify-center text-on-surface-variant px-lg py-xs hover:bg-surface-container scale-95 transition-transform duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="person">person</span>
+<span class="font-label-caps text-label-caps">Profile</span>
+</a>
+</nav>
+<script>
+        // Simple script to demonstrate toast appearance if Save is clicked
+        document.querySelector('button.bg-\\[\\#00aeef\\]').addEventListener('click', () => {
+            const toast = document.getElementById('success-toast');
+            toast.classList.remove('opacity-0');
+            toast.classList.add('opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('opacity-100');
+                toast.classList.add('opacity-0');
+            }, 3000);
+        });
+    </script>
+</body></html>

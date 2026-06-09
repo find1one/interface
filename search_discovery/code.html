@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Skybound Travel - Search</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+                  "surface": "#fcf9f8",
+                  "secondary-container": "#b9e2ff",
+                  "primary-container": "#00aeef",
+                  "outline": "#6e7881",
+                  "on-tertiary-fixed-variant": "#6b3b00",
+                  "on-error": "#ffffff",
+                  "on-secondary-fixed": "#001e2d",
+                  "secondary-fixed-dim": "#a3cce8",
+                  "on-primary": "#ffffff",
+                  "on-tertiary": "#ffffff",
+                  "surface-bright": "#fcf9f8",
+                  "primary": "#00658d",
+                  "on-error-container": "#93000a",
+                  "inverse-on-surface": "#f3f0ef",
+                  "on-background": "#1c1b1b",
+                  "error": "#ba1a1a",
+                  "on-tertiary-fixed": "#2d1600",
+                  "primary-fixed-dim": "#82cfff",
+                  "tertiary-container": "#ea8c21",
+                  "secondary": "#3a637c",
+                  "surface-variant": "#e5e2e1",
+                  "inverse-surface": "#313030",
+                  "on-secondary": "#ffffff",
+                  "tertiary-fixed-dim": "#ffb876",
+                  "on-tertiary-container": "#572f00",
+                  "tertiary": "#8d4f00",
+                  "surface-dim": "#dcd9d9",
+                  "surface-tint": "#00658d",
+                  "error-container": "#ffdad6",
+                  "primary-fixed": "#c6e7ff",
+                  "outline-variant": "#bdc8d1",
+                  "on-primary-container": "#003e58",
+                  "background": "#fcf9f8",
+                  "surface-container-lowest": "#ffffff",
+                  "on-secondary-container": "#3d657e",
+                  "on-primary-fixed": "#001e2d",
+                  "secondary-fixed": "#c6e7ff",
+                  "tertiary-fixed": "#ffdcc0",
+                  "on-surface": "#1c1b1b",
+                  "surface-container-highest": "#e5e2e1",
+                  "surface-container": "#f0edec",
+                  "on-surface-variant": "#3e4850",
+                  "surface-container-high": "#ebe7e7",
+                  "inverse-primary": "#82cfff",
+                  "on-secondary-fixed-variant": "#204b63",
+                  "on-primary-fixed-variant": "#004c6b",
+                  "surface-container-low": "#f6f3f2"
+          },
+          "borderRadius": {
+                  "DEFAULT": "0.125rem",
+                  "lg": "0.25rem",
+                  "xl": "0.5rem",
+                  "full": "0.75rem"
+          },
+          "spacing": {
+                  "sm": "8px",
+                  "md": "12px",
+                  "gutter": "12px",
+                  "xs": "4px",
+                  "lg": "16px",
+                  "xl": "24px",
+                  "unit": "4px",
+                  "container-margin": "16px"
+          },
+          "fontFamily": {
+                  "numeric-data": [
+                          "Plus Jakarta Sans"
+                  ],
+                  "body-sm": [
+                          "Plus Jakarta Sans"
+                  ],
+                  "display-lg": [
+                          "Plus Jakarta Sans"
+                  ],
+                  "label-caps": [
+                          "Plus Jakarta Sans"
+                  ],
+                  "headline-md": [
+                          "Plus Jakarta Sans"
+                  ],
+                  "body-md": [
+                          "Plus Jakarta Sans"
+                  ],
+                  "title-sm": [
+                          "Plus Jakarta Sans"
+                  ]
+          },
+          "fontSize": {
+                  "numeric-data": [
+                          "16px",
+                          {
+                                  "lineHeight": "1",
+                                  "fontWeight": "500"
+                          }
+                  ],
+                  "body-sm": [
+                          "13px",
+                          {
+                                  "lineHeight": "1.4",
+                                  "fontWeight": "400"
+                          }
+                  ],
+                  "display-lg": [
+                          "32px",
+                          {
+                                  "lineHeight": "1.2",
+                                  "letterSpacing": "-0.02em",
+                                  "fontWeight": "700"
+                          }
+                  ],
+                  "label-caps": [
+                          "11px",
+                          {
+                                  "lineHeight": "1",
+                                  "letterSpacing": "0.05em",
+                                  "fontWeight": "700"
+                          }
+                  ],
+                  "headline-md": [
+                          "24px",
+                          {
+                                  "lineHeight": "1.3",
+                                  "letterSpacing": "-0.01em",
+                                  "fontWeight": "600"
+                          }
+                  ],
+                  "body-md": [
+                          "14px",
+                          {
+                                  "lineHeight": "1.5",
+                                  "fontWeight": "400"
+                          }
+                  ],
+                  "title-sm": [
+                          "18px",
+                          {
+                                  "lineHeight": "1.4",
+                                  "fontWeight": "600"
+                          }
+                  ]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Hide scrollbar for horizontal scrolling but keep functionality */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body-md antialiased min-h-screen pb-20 pt-14 selection:bg-primary-container selection:text-white max-w-[390px] mx-auto relative overflow-x-hidden border-x border-outline-variant/30">
+<!-- TopAppBar -->
+<header class="bg-surface fixed top-0 w-full max-w-[390px] z-50 border-b border-outline-variant flex items-center justify-between px-container-margin h-14 transition-colors duration-200">
+<div class="flex items-center gap-sm text-on-surface hover:bg-surface-container cursor-pointer p-xs rounded">
+<span class="material-symbols-outlined text-[24px]">flight_takeoff</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary-container">Search</h1>
+<div class="flex items-center gap-sm text-on-surface-variant hover:bg-surface-container cursor-pointer p-xs rounded">
+<span class="material-symbols-outlined text-[24px]">notifications</span>
+</div>
+</header>
+<main class="flex flex-col gap-xl p-container-margin">
+<!-- Search Input & Filter -->
+<section class="flex flex-col gap-sm mt-sm">
+<div class="flex items-center gap-sm">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-outline">search</span>
+<input class="w-full h-11 pl-[40px] pr-md bg-white border border-outline-variant rounded-[4px] font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container transition-colors" placeholder="Search destinations, cities, attractions" type="text"/>
+</div>
+<button class="w-11 h-11 flex items-center justify-center bg-white border border-outline-variant rounded-[4px] text-on-surface hover:bg-surface-container transition-colors shrink-0">
+<span class="material-symbols-outlined">tune</span>
+</button>
+</div>
+<!-- Location Chip -->
+<div class="flex items-center gap-xs text-primary-container font-label-caps text-label-caps cursor-pointer hover:opacity-80 w-fit pt-xs">
+<span class="material-symbols-outlined text-[16px]">my_location</span>
+<span>Near me</span>
+</div>
+</section>
+<!-- Category Chips -->
+<section class="-mx-container-margin px-container-margin">
+<div class="flex gap-sm overflow-x-auto no-scrollbar pb-xs snap-x">
+<button class="snap-start shrink-0 px-md py-sm bg-[#e4f6fd] border border-primary-container text-primary-container rounded-[4px] font-label-caps text-label-caps whitespace-nowrap transition-colors">
+          Beach
+        </button>
+<button class="snap-start shrink-0 px-md py-sm bg-white border border-outline-variant text-on-surface rounded-[4px] font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container transition-colors">
+          Mountain
+        </button>
+<button class="snap-start shrink-0 px-md py-sm bg-white border border-outline-variant text-on-surface rounded-[4px] font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container transition-colors">
+          City
+        </button>
+<button class="snap-start shrink-0 px-md py-sm bg-white border border-outline-variant text-on-surface rounded-[4px] font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container transition-colors">
+          Food
+        </button>
+<button class="snap-start shrink-0 px-md py-sm bg-white border border-outline-variant text-on-surface rounded-[4px] font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container transition-colors">
+          Culture
+        </button>
+<button class="snap-start shrink-0 px-md py-sm bg-white border border-outline-variant text-on-surface rounded-[4px] font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container transition-colors">
+          Family
+        </button>
+<button class="snap-start shrink-0 px-md py-sm bg-white border border-outline-variant text-on-surface rounded-[4px] font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container transition-colors">
+          Adventure
+        </button>
+<button class="snap-start shrink-0 px-md py-sm bg-white border border-outline-variant text-on-surface rounded-[4px] font-label-caps text-label-caps whitespace-nowrap hover:bg-surface-container transition-colors">
+          Relaxation
+        </button>
+</div>
+</section>
+<!-- Recent Searches -->
+<section class="flex flex-col gap-sm">
+<h2 class="font-title-sm text-title-sm text-on-surface border-b border-outline-variant pb-xs">Recent</h2>
+<div class="flex flex-col">
+<div class="flex items-center justify-between py-md border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors cursor-pointer -mx-xs px-xs rounded-sm group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline text-[20px]">history</span>
+<span class="font-body-sm text-body-sm text-on-surface">Kyoto, Japan</span>
+</div>
+<button class="text-outline hover:text-error transition-colors p-xs opacity-50 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex items-center justify-between py-md border-b border-outline-variant/50 hover:bg-surface-container-low transition-colors cursor-pointer -mx-xs px-xs rounded-sm group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline text-[20px]">history</span>
+<span class="font-body-sm text-body-sm text-on-surface">Swiss Alps</span>
+</div>
+<button class="text-outline hover:text-error transition-colors p-xs opacity-50 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="flex items-center justify-between py-md hover:bg-surface-container-low transition-colors cursor-pointer -mx-xs px-xs rounded-sm group">
+<div class="flex items-center gap-md">
+<span class="material-symbols-outlined text-outline text-[20px]">history</span>
+<span class="font-body-sm text-body-sm text-on-surface">Tokyo Museums</span>
+</div>
+<button class="text-outline hover:text-error transition-colors p-xs opacity-50 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Suggested Destinations -->
+<section class="flex flex-col gap-sm">
+<h2 class="font-title-sm text-title-sm text-on-surface border-b border-outline-variant pb-xs">Suggested Destinations</h2>
+<div class="flex flex-col gap-md">
+<!-- Card 1 -->
+<div class="flex items-center p-sm bg-white border border-outline-variant rounded-[6px] hover:border-primary-container cursor-pointer transition-colors group">
+<div class="w-16 h-16 rounded-[4px] bg-surface-container overflow-hidden shrink-0 relative">
+<img alt="Hokkaido winter landscape with hot springs" class="w-full h-full object-cover" data-alt="A serene, minimalist photograph of a Hokkaido winter landscape featuring natural hot springs. The scene is bathed in bright, soft white lighting typical of a high-key light mode aesthetic. Crisp white snow contrasts with dark, earthy tones of natural stone, while a subtle, vibrant accent of cyan water provides functional clarity to the composition. The mood is tranquil and professional." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmtfdvFsHk6A_nNLgpyxd2zX9oEeN-1qdysUOHSBEUdi4Pl_D_xMslqXUT7ZHwsnmgxnc9Q1mWizG5FhTlpFfxtX5k6VIWVTvoIQIECf4FyfVIb3jbjyreUNABG9kN5b7xOOT_0-yVxDMuyhvpmwSOH1kFFoL69BbiMWOKxMqXy-kvuc0Tl30tNf3briDRa-43au5tBLK-ZrnFDZppej5zhUUkV3RPi0F1Yw1qu2hwTDYq9y_DMwZbYndgSwWY6tomH16rOrvjTk0"/>
+</div>
+<div class="flex flex-col ml-md flex-1">
+<span class="font-title-sm text-body-md text-on-surface font-semibold group-hover:text-primary-container transition-colors">Hokkaido</span>
+<span class="font-body-sm text-[12px] text-outline mt-xs">Nature &amp; Spa</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary-container transition-colors">chevron_right</span>
+</div>
+<!-- Card 2 -->
+<div class="flex items-center p-sm bg-white border border-outline-variant rounded-[6px] hover:border-primary-container cursor-pointer transition-colors group">
+<div class="w-16 h-16 rounded-[4px] bg-surface-container overflow-hidden shrink-0 relative">
+<img alt="Osaka vibrant street food scene" class="w-full h-full object-cover" data-alt="A sharp, utilitarian photograph of a vibrant Osaka street food alleyway at dusk. The image maintains a modernist, high-density aesthetic with precise alignment of food stalls. The lighting is crisp and well-balanced, favoring bright, neutral tones with minimal shadows. Touches of vibrant red and blue from signage add specific focal points against a predominantly light grey and white urban backdrop. The atmosphere is bustling yet orderly." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuqYaV8u1V7m3XNzKoRl92NOPszmq0EhJUg7Ru4nvDFyC62o5ol4IDJePn-QGQSzkL0vZdssb04tsUVT509Qba92oBJ9A092rz9VZXhLUQAZPKGZgx1X5K-8tHLb8KNjoam7jxG_smBzSHUkpxaizpM1xr5FyEtjiWwbvVbtUPRfstNeaf9sOM-btKnAA6MsbcaTMwB4NwNGPzbGLpAWLw2NBxR2RCTZEtw7lRAfnqwbqGSKJVlS3R4mTE_ktAw32CwJBRrLlxsnM"/>
+</div>
+<div class="flex flex-col ml-md flex-1">
+<span class="font-title-sm text-body-md text-on-surface font-semibold group-hover:text-primary-container transition-colors">Osaka</span>
+<span class="font-body-sm text-[12px] text-outline mt-xs">Street Food &amp; Nightlife</span>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary-container transition-colors">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface fixed bottom-0 left-0 w-full max-w-[390px] left-1/2 -translate-x-1/2 z-50 flex justify-around items-center h-16 px-xs border-t border-outline-variant">
+<button class="flex flex-col items-center justify-center text-outline font-label-caps text-label-caps hover:text-primary transition-transform scale-95 active:scale-90 w-16 gap-1">
+<span class="material-symbols-outlined">home</span>
+<span>Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-primary-container font-label-caps text-label-caps font-bold transition-transform scale-95 active:scale-90 w-16 gap-1" style="font-variation-settings: 'FILL' 1;">
+<span class="material-symbols-outlined">search</span>
+<span>Search</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline font-label-caps text-label-caps hover:text-primary transition-transform scale-95 active:scale-90 w-16 gap-1">
+<span class="material-symbols-outlined">event_note</span>
+<span>Itinerary</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline font-label-caps text-label-caps hover:text-primary transition-transform scale-95 active:scale-90 w-16 gap-1">
+<span class="material-symbols-outlined">map</span>
+<span>Map</span>
+</button>
+<button class="flex flex-col items-center justify-center text-outline font-label-caps text-label-caps hover:text-primary transition-transform scale-95 active:scale-90 w-16 gap-1">
+<span class="material-symbols-outlined">person</span>
+<span>Profile</span>
+</button>
+</nav>
+</body></html>
