@@ -17,6 +17,13 @@ const ALLOWED_ORIGINS = new Set(
     .map((origin) => origin.trim())
     .filter(Boolean)
 );
+const ALLOWED_ORIGIN_PATTERNS = [...ALLOWED_ORIGINS]
+  .filter((origin) => origin.includes("*"))
+  .map((origin) => new RegExp(`^${origin.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace("\\*", ".*")}$`));
+
+function isAllowedOrigin(origin) {
+  return ALLOWED_ORIGINS.has(origin) || ALLOWED_ORIGIN_PATTERNS.some((pattern) => pattern.test(origin));
+}
 
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
   console.warn("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY. Add backend/.env before running against Supabase.");
@@ -37,7 +44,7 @@ const app = express();
 
 app.use(cors({
   origin(origin, callback) {
-    if (!origin || ALLOWED_ORIGINS.has(origin)) {
+    if (!origin || isAllowedOrigin(origin)) {
       callback(null, true);
       return;
     }
