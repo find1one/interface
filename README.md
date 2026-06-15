@@ -1,5 +1,21 @@
 # Skybound Mobile Travel Planner
 
+## Online Demo URL
+
+Use the fixed Vercel production URL for demo and testing:
+
+```text
+https://interface-sage-seven.vercel.app
+```
+
+Do not use Vercel preview deployment URLs such as:
+
+```text
+https://interface-xxxx-todd-s-projects13.vercel.app
+```
+
+The Render backend CORS allowlist is configured for the fixed production URL. Preview URLs change between deployments and can trigger `Unable to load data`, `Failed to fetch`, or `Origin not allowed` errors unless they are also added to `ALLOWED_ORIGINS`.
+
 Skybound is a mobile-style travel planning demo app. It includes destination search, preference-based recommendations, destination details, itinerary management, route-map previews, saved destinations, and profile preferences.
 
 The project can be demoed in two modes:
@@ -94,14 +110,15 @@ Fill in:
 ```env
 SUPABASE_URL=your_supabase_project_url
 SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
-PORT=4174
+ALLOWED_ORIGINS=http://localhost:4173,http://127.0.0.1:4173
 ```
 
 Important:
 
 - Use the **service role key**, not the anon key.
 - Do not commit or share `backend/.env`.
-- The frontend is currently configured to call `http://localhost:4174/api`.
+- `PORT` is optional for local development. Render provides `PORT` automatically in production.
+- The frontend API base is configured in `frontend_app/config.js`.
 
 ### 3. Install and Start Backend
 
@@ -180,7 +197,11 @@ http://localhost:4173
 http://127.0.0.1:4173
 ```
 
-If you serve the frontend on another port, update `ALLOWED_ORIGINS` in `backend/server.js`.
+If you serve the frontend from another origin, update the backend `ALLOWED_ORIGINS` environment variable. For the deployed Vercel demo, include:
+
+```text
+https://interface-sage-seven.vercel.app
+```
 
 ## Data Notes
 
@@ -243,7 +264,13 @@ Some demo images are remote URLs. Make sure the demo machine has internet access
 
 ### CORS error
 
-Serve the frontend from `localhost:4173` or `127.0.0.1:4173`. If using another origin, add it to `ALLOWED_ORIGINS` in `backend/server.js`.
+Use the fixed Vercel production URL:
+
+```text
+https://interface-sage-seven.vercel.app
+```
+
+Do not use Vercel preview URLs unless they are included in the Render backend `ALLOWED_ORIGINS` environment variable. For local development, serve the frontend from `localhost:4173` or `127.0.0.1:4173`.
 
 ### Supabase error: demo user not found
 
