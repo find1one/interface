@@ -436,7 +436,7 @@ function localDestinationById(id) {
   return [...seed.destinations, ...homeExtraRecommendations].find((item) => item.id === id) || null;
 }
 
-const API_BASE = "http://localhost:4174/api";
+const API_BASE = window.APP_CONFIG?.API_BASE || "http://localhost:4174/api";
 const TODAY = formatDateValue(new Date());
 const LOCAL_PREFERENCES_KEY = "skybound.localPreferenceExtensions";
 

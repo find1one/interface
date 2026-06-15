@@ -5,12 +5,18 @@ import { createClient } from "@supabase/supabase-js";
 
 dotenv.config();
 
-const PORT = Number(process.env.PORT || 4174);
+const PORT = process.env.PORT || 4174;
 const DEMO_PHONE = "+10000000000";
-const ALLOWED_ORIGINS = new Set([
+const DEFAULT_ALLOWED_ORIGINS = [
   "http://localhost:4173",
   "http://127.0.0.1:4173"
-]);
+];
+const ALLOWED_ORIGINS = new Set(
+  (process.env.ALLOWED_ORIGINS || DEFAULT_ALLOWED_ORIGINS.join(","))
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean)
+);
 
 if (!process.env.SUPABASE_URL || !process.env.SUPABASE_SERVICE_ROLE_KEY) {
   console.warn("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY. Add backend/.env before running against Supabase.");
@@ -35,10 +41,18 @@ app.use(cors({
       callback(null, true);
       return;
     }
-    callback(new Error("Not allowed by CORS"));
+    callback(new Error(`CORS blocked: ${origin}`));
   }
 }));
 app.use(express.json());
+
+app.get("/api/health", (_req, res) => {
+  res.json({
+    ok: true,
+    service: "travel-api",
+    time: new Date().toISOString()
+  });
+});
 
 function sendError(res, status, message) {
   return res.status(status).json({ error: message });
@@ -636,7 +650,7 @@ app.delete("/api/saved-destinations/:destinationId", asyncHandler(async (req, re
 }));
 
 app.use((err, _req, res, _next) => {
-  if (err.message === "Not allowed by CORS") {
+  if (err.message?.startsWith("CORS blocked:")) {
     sendError(res, 403, "Origin not allowed");
     return;
   }
@@ -644,6 +658,6 @@ app.use((err, _req, res, _next) => {
   sendError(res, 500, "Internal server error");
 });
 
-app.listen(PORT, () => {
-  console.log(`Skybound backend listening on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Skybound backend listening on port ${PORT}`);
 });
